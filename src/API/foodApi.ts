@@ -6,11 +6,10 @@ const APP_KEY: string = 'IxaPMYvtMvBgpRYCRtBKydcd8OZ5PquSvgsikpkw';
 // API params
 
 const dataType = 'dataType=Foundation';
-const page_size = '25';
+const page_size = '28';
 const sort_by = 'sortBy=dataType';
 const sort_order = 'sortOrder=asc';
 
-const foodId = '534958';
 
 
 export const getFoodsList = (page_number : string ,dataType:string)  => {

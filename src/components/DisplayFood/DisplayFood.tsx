@@ -7,7 +7,7 @@ type DisplayFoodProps = {
 	foodListState: Array<ListType>;
 };
 
-const DisplayFood: FC<DisplayFoodProps> = React.memo(({ foodListState }) => {
+const DisplayFood: FC<DisplayFoodProps> = ({ foodListState }) => {
 	return (
 		<div className="display-food">
 			<div className="display-food__wrap">
@@ -17,6 +17,6 @@ const DisplayFood: FC<DisplayFoodProps> = React.memo(({ foodListState }) => {
 			</div>
 		</div>
 	);
-});
+};
 
 export default DisplayFood;
