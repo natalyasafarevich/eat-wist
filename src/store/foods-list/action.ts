@@ -12,10 +12,10 @@ export type FoodListActionType = {
 
 export type ActionsType = FoodListActionType;
 
-export const foodList = (page : string) => {
+export const foodList = (page : string,dataType:string) => {
   return async (dispatch : Dispatch < ActionsType >) : Promise < void > => {
     try {
-      const response = await getFoodsList(page);
+      const response = await getFoodsList(page, dataType);
       const data = await response.data;
       dispatch({type: SET_FOOD_LIST, list: data});
     } catch (e) { // Обработка ошибок

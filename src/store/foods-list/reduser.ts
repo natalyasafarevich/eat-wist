@@ -6,7 +6,7 @@ const initialState: InitialStateProps = {
   list: []
 }
 
-export const FoodListReduser = (state = initialState, action : ActionsType  )  => {
+export const FoodListReduser = (state = initialState, action : ActionsType  ):InitialStateProps  => {
 
   switch (action.type) {
 

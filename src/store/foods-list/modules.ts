@@ -8,7 +8,7 @@ export type FoodNutrientsType = {
 }
 export type ListType = {
   fdcId: number,
-  description: string | null,
+  description: string ,
   brandOwner: string | null,
   dataType: string | null,
   foodNutrients: Array < FoodNutrientsType >,
