@@ -1,19 +1,21 @@
-import React, {FC,useEffect} from "react";
-import './HomePage.scss';
-// import getSites from "../../API/foodApi";
+import React, { FC, useEffect } from "react";
+import { useSelector } from "react-redux";
 
+import "./HomePage.scss";
+import { useDispatch } from "react-redux";
+import {  foodList } from "../../store/foods-list/action";
 
-const HomePage: FC =()=>{
+const HomePage = () => {
+	const dispatch: any = useDispatch();
+	
+	const foodListState= useSelector((state: any) => state.fList?.list);
 
-  useEffect(()=>{
-  // const react =  getSites('534958').then(data=>console.log(data))
-  // console.log(react)
-  },[])
-  return(
-    <div className="home-page">
+	useEffect(() => {
+		dispatch(foodList("5"));
+		console.log(foodListState);
+	}, []);
 
-    </div>
-  )
-}
+	return <div className="home-page">{/* Ваш JSX-код */}</div>;
+};
 
 export default HomePage;

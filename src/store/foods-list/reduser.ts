@@ -1,22 +1,21 @@
+import {cloneDeep} from "lodash";
+import {ActionsType, FoodListActionType, SET_FOOD_LIST} from "./action";
+import { InitialStateProps } from "./modules";
 
-// import { cloneDeep } from "lodash";
-// import { SET_MAIN_PAGE } from "./action";
+const initialState: InitialStateProps = {
+  list: []
+}
 
+export const FoodListReduser = (state = initialState, action : ActionsType  )  => {
 
-// const initialState = {
-//   main_page: {}
-// }
+  switch (action.type) {
 
-// export const mainPageReduser = (state = initialState, action:any) => {
+    case SET_FOOD_LIST:
+      const clone = cloneDeep(state);
+      clone.list = action.list;
+      return clone;
 
-//   switch (action.type) {
-
-//     case SET_MAIN_PAGE:
-//       const clone = cloneDeep(state);
-//       clone.main_page = action.data;
-//       return clone;
-
-//     default:
-//       return state
-//   }
-// }
+    default:
+      return state
+  }
+}

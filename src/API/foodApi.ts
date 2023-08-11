@@ -12,7 +12,7 @@ const foodId = '534958';
 
 
 export function getFoodsList(page_number : string):any {
-  return axios.get(`https://api.nal.usda.gov/fdc/v1/foods/list?${dataType}&pageSize=${page_size}&pageNumber=${page_number}&api_key`);
+  return axios.get(`https://api.nal.usda.gov/fdc/v1/foods/list?${dataType}&pageSize=${page_size}&pageNumber=${page_number}&api_key=${APP_KEY}`);
 }
 
 export function getFood(foodId : string) {

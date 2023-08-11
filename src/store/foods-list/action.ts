@@ -1,19 +1,26 @@
 import {getFoodsList} from "../../API/foodApi";
-
+import {Dispatch} from 'redux';
+import {ListType} from "./modules";
 export const SET_FOOD_LIST = 'trailers/SET_MAIN_PAGE';
 
-type FoodListProps = {
-  page: string
+// dispatch - this's action/s
+
+export type FoodListActionType = {
+  type: typeof SET_FOOD_LIST,
+  list: Array < ListType > |null,
 }
 
-export function foodList({ page }: FoodListProps) {
-  return async (dispatch: (action: { type: string; list: any }) => void) => {
+export type ActionsType = FoodListActionType;
+
+export const foodList = (page : string) => {
+  return async (dispatch : Dispatch < ActionsType >) : Promise < void > => {
     try {
       const response = await getFoodsList(page);
       const data = await response.data;
-      dispatch({ type: SET_FOOD_LIST, list: data });
-    } catch (e) {
-      // Обработка ошибок
+      dispatch({type: SET_FOOD_LIST, list: data});
+    } catch (e) { // Обработка ошибок
     }
   };
+
 }
+
