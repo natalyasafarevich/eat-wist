@@ -10,7 +10,7 @@ export type ListType = {
   fdcId: number,
   description: string ,
   brandOwner: string | null,
-  dataType: string | null,
+  dataType: string ,
   foodNutrients: Array < FoodNutrientsType >,
   gtinUpc: string,
   publicationDate: string
