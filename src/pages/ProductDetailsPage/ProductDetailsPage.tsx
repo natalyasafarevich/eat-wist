@@ -6,18 +6,25 @@ import { useDispatch } from "react-redux";
 import { getProduct } from "../../store/product/action";
 import { useSelector } from "react-redux";
 import { Product } from "../../moduls/Product";
+import SingleFood from "../../components/SingleFood/SingleFood";
 
 const ProductDetailsPage: FC = () => {
-	const foodListState = useSelector((state:any) => state.descProd.product);
+	const productState = useSelector((state: any) => state.descProd.product);
+
 	const params = useParams();
 	const dispatch: any = useDispatch();
 
-	// getFood
 	useEffect(() => {
 		dispatch(getProduct(`${params.id}`));
 	}, []);
-	console.log(foodListState);
-	return <div className="product-details"></div>;
+	console.log(productState);
+	return (
+		<div className="product-details">
+			<div className="wrap">
+				{productState ? <SingleFood food={productState} /> : <>loading</>}
+			</div>
+		</div>
+	);
 };
 
 export default ProductDetailsPage;
