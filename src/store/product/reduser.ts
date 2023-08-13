@@ -8,15 +8,23 @@ type initialStateProps = {
 }
 const initialState: initialStateProps = {
   product: {
-    dataType: "",
-    description: "",
     fdcId: 0,
+    description: "",
+    publicationDate: "",
     foodNutrients: [],
-    publicationDate: '',
-    brandOwner: '',
-    gtinUpc: '',
+    dataType: '',
+    foodClass: '',
+    inputFoods: [],
+    foodComponents: [],
+    foodAttributes: [],
+    nutrientConversionFactors: [],
     ndbNumber: 0,
-    foodCode: ''
+    isHistoricalReference: false,
+    foodCategory: {
+      id: 0,
+      code: '',
+      description: ""
+    }
   }
 }
 export const ProductReduser = (state = initialState, action : ActionsType) : initialStateProps => {

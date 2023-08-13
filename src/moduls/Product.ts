@@ -1,3 +1,10 @@
+type GeneralTypes = {
+  fdcId: number,
+  description: string,
+  publicationDate: string,
+  foodClass: string
+}
+
 type FoodNutrients = {
   number: number,
   name: string,
@@ -5,16 +12,42 @@ type FoodNutrients = {
   unitName: string,
   derivationCode: string,
   derivationDescription: string
+}
+type FoodGroupType = {
+  id: number,
+  code: string,
+  description: string
+}
+type InputFoodType = GeneralTypes & {
+  foodAttributeTypes: Array < any >,
+  totalRefuse: number,
+  dataType: string,
+  foodGroup: FoodGroupType
 
 }
-export type Product = {
-  dataType: string,
-  description: string,
-  fdcId: number,
+
+type InputFoodsType = {
+  id: string,
+  foodDescription: string,
+  inputFood: InputFoodType
+}
+type NutrientFactorsType = {
+  id: number,
+  proteinValue: number,
+  fatValue: number,
+  carbohydrateValue: number,
+  type: string,
+  name: string
+}
+export type Product = GeneralTypes & {
   foodNutrients: Array < FoodNutrients >,
-  publicationDate: string,
-  brandOwner: string,
-  gtinUpc: string,
+  dataType: string,
+  foodClass: string,
+  inputFoods: Array < InputFoodsType >,
+  foodComponents: Array < any >,
+  foodAttributes: Array < any >,
+  nutrientConversionFactors: Array < NutrientFactorsType >,
   ndbNumber: number,
-  foodCode: string
+  isHistoricalReference: boolean,
+  foodCategory: FoodGroupType
 }
