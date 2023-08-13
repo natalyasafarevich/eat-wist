@@ -1,8 +1,22 @@
-type DataTypeProps = {
-  name: string,
-  desc: string
-}
+import {I} from "./Generics";
+import {DataTypeProps} from "./types-interfaces/types";
 
+// ids for SingleFood
+export const idsProduct: Array < I > = [
+  {
+    id: 1004
+  }, {
+    id: 1003
+  }, {
+    id: 1005
+  }
+];
+export const caloriesId: Array < I > = [{
+    id: 2047
+  }];
+
+
+// Description Data Type
 const dataType: Array < DataTypeProps > = [
   {
     name: "Foundation",
@@ -19,5 +33,6 @@ const dataType: Array < DataTypeProps > = [
     desc: `Historic data on food components including nutrients derived from analyses, calculations, and published literature`
   },
 ]
+
 
 export default dataType;

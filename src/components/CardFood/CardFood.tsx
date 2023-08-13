@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { combineWords } from "../../helper/concat";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import Tooltip from "../Tooltip/Tooltip";
-import dataType from "../../moduls/DataType";
 import "./CardFood.scss";
 
 type CardFoodProps = {

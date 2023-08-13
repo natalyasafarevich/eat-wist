@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import { Link, Route } from "react-router-dom";
 import "./Header.scss";
-import LinkProps from "../../moduls/Header";
+import LinkProps from "../../moduls/types-interfaces/types";
+
 
 const links: Array<LinkProps> = [
 	{

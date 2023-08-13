@@ -4,14 +4,21 @@ type GeneralTypes = {
   publicationDate: string,
   foodClass: string
 }
-
-type FoodNutrients = {
+type NutrientType = {
+  id:number,
+  name: string,
+  number:string,
+  rank: number,
+  unitName: string
+}
+export type FoodNutrients = {
   number: number,
   name: string,
   amount: number,
   unitName: string,
   derivationCode: string,
   derivationDescription: string
+  nutrient:NutrientType
 }
 type FoodGroupType = {
   id: number,

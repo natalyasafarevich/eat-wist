@@ -1,6 +1,6 @@
 import {cloneDeep} from "lodash";
 import {ActionsType, SET_PRODUCT} from "./action";
-import {Product} from "../../moduls/Product";
+import {Product} from "../../moduls/types-interfaces/Product";
 
 
 type initialStateProps = {

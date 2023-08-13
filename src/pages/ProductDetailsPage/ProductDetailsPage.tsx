@@ -5,7 +5,7 @@ import { getFood } from "../../API/foodApi";
 import { useDispatch } from "react-redux";
 import { getProduct } from "../../store/product/action";
 import { useSelector } from "react-redux";
-import { Product } from "../../moduls/Product";
+import { Product } from "../../moduls/types-interfaces/Product";
 import SingleFood from "../../components/SingleFood/SingleFood";
 
 const ProductDetailsPage: FC = () => {
