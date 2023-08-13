@@ -5,10 +5,11 @@ import { caloriesId, idsProduct } from "../../moduls/dafaultValue";
 import { FoodProps } from "../../moduls/types-interfaces/types";
 import "./SingleFood.scss";
 
-
+// get procents
+const procents = {};
 const SingleFood: FC<FoodProps> = ({ food }) => {
 	const [mainDetails, setMainDetails] = useState<Array<FoodNutrients>>([]);
-	const [calories, setCalories] = useState<string>();
+	const [calories, setCalories] = useState<number>(0);
 
 	const getDetailsValues = useCallback(() => {
 		let { foodNutrients } = food;
@@ -22,9 +23,9 @@ const SingleFood: FC<FoodProps> = ({ food }) => {
 
 		if (caloriesDetails.length > 0) {
 			const [singleObject] = caloriesDetails;
-			setCalories(singleObject.nutrient.number);
+			setCalories(singleObject.amount);
 		} else {
-			setCalories(undefined);
+			return false;
 		}
 	}, [food]);
 
@@ -42,22 +43,46 @@ const SingleFood: FC<FoodProps> = ({ food }) => {
 				</div>
 				<div className="single-food__box">
 					<div className="single-food__detail">
+						<div className="single-food__cals">
+							Calories: <span>{Math.round(calories)}</span>
+						</div>
+						<div className="single-food__info">
+							{mainDetails?.map((value) => {
+								return (
+									<div key={value.nutrient.id} className="single-food__info main-values">
+										<div className="main-values__inner">
+											<div className="main-values__box">
+												<p
+													className={`main-values__value main-values__value_${value.nutrient.id}`}>
+													{Math.round((value.amount / calories) * 100)}
+													<span>%</span>
+												</p>
+												<h4 className="main-values__name">{value.nutrient.name}</h4>
+											</div>
+										</div>
+									</div>
+								);
+							})}
+						</div>
+					</div>
+					<div className="single-food__table">
 						{mainDetails?.map((value) => {
 							return (
 								<div key={value.nutrient.id} className="single-food__info main-values">
 									<div className="main-values__inner">
 										<div className="main-values__box">
-											<h4 className="main-values__name">{value.nutrient.name}</h4>
-											<p className="main-values__value">
-												{Math.round(value.amount)}
+										<h4 className="main-values__name">{value.nutrient.name}</h4>
+											<p
+												className={`main-values__value main-values__value_${value.nutrient.id}`}>
+												{Math.floor(value.amount * 100) / 100}
 												<span>{value.nutrient.unitName}</span>
 											</p>
+											
 										</div>
 									</div>
 								</div>
 							);
 						})}
-						<div className="main-values__">cal: {calories}</div>
 					</div>
 				</div>
 			</div>

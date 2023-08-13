@@ -6,7 +6,7 @@ const APP_KEY: string = 'IxaPMYvtMvBgpRYCRtBKydcd8OZ5PquSvgsikpkw';
 // API params
 
 const dataType = 'dataType=Foundation';
-const page_size = '28';
+const page_size = '50';
 const sort_by = 'sortBy=dataType';
 const sort_order = 'sortOrder=asc';
 
