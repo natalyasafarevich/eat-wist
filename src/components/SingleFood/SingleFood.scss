@@ -42,13 +42,18 @@
   // .single-food__detail
 
   &__detail {
-    width: 50%;
+    // width: 50%;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
+  &__row {
+    display: flex;
+    width: 100%;
+  }
   &__table {
-    width: 50%;
+    // width: 50%;
+    max-width: 100%;
     margin-top: 35px;
     background-color: var(--button-grey-bg);
     border-radius: 15px;
@@ -82,12 +87,6 @@
       display: block;
     }
   }
-  // &__info{
-  //   padding: 15px 10px;
-  // }
-
-  // .single-food__cals
-
   &__cals {
     text-align: center;
     font-size: 30px;
@@ -97,20 +96,8 @@
       color: var(--addition-grey-color);
     }
   }
-
-  // .single-food__info
-
-  &__info {
-  }
 }
 .main-values {
-  // .main-values__inner
-
-  &__inner {
-  }
-
-  // .main-values__box
-
   &__box {
     display: flex;
     margin-bottom: 15px;

@@ -1,6 +1,11 @@
-import { Product } from "./Product";
+import { FoodNutrients, Product } from "./Product";
 
-
+export type NutritionDescProps =  {
+  info:FoodNutrients
+}
+export type NutritionProps = FoodProps & {
+  calories:number
+}
 export type FoodProps = {
   food: Product;
 };

@@ -15,6 +15,15 @@ export const caloriesId: Array < I > = [{
     id: 2047
   }];
 
+// for NutritionCard
+export const exceptionIds: Array < number > = [
+  2045,
+  2039,
+  2043,
+  2046,
+  2042
+];
+
 
 // Description Data Type
 const dataType: Array < DataTypeProps > = [
