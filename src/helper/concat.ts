@@ -1,3 +1,3 @@
 export const combineWords = (text : string ) => {
-  return text.toLocaleLowerCase().split(' ').join('-')
+  return text.replace(/,/g, '').toLocaleLowerCase().split(' ').join('-')
 }
