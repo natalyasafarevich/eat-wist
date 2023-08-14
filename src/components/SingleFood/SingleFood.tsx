@@ -86,7 +86,6 @@ const SingleFood: FC<FoodProps> = ({ food }) => {
 								);
 							})}
 						</div>
-						{/* <Minerals food={food}/> */}
 					</div>
 					<NutritionCard calories={calories} food={food} />
 				</div>
