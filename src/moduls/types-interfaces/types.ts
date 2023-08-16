@@ -22,3 +22,8 @@ type LinkProps = {
 }
 
 export default LinkProps
+
+
+export type ParamsType = {
+	name:string
+}

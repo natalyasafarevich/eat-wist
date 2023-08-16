@@ -13,11 +13,11 @@ function App() {
 			<Header />
 			<Routes>
 				<Route path={"/"} element={<HomePage />} />
-				<Route path={"/datatype"} element={<DataTypePage />} />
-				<Route path={"/:id/:name"} element={<ProductDetailsPage />} />
+				<Route path={"/datatype/:name"} element={<DataTypePage />} />
+				<Route path={"/datatype/:typename/:name/:id"} element={<ProductDetailsPage />} />
 			</Routes>
 		</div>
 	);
-}
+}	
 
 export default App;

@@ -38,7 +38,7 @@ const CardFood: FC<CardFoodProps> = ({ card }) => {
 	};
 
 	return (
-		<Link to={`/${card.fdcId}/${editLink}`} className="card-food">
+		<Link to={`${editLink}/${card.fdcId}/`} className="card-food">
 			<span className="card-food__wrap">
 				<h2 className="card-food__title">{card.description}</h2>
 				<span className="card-food__desc">

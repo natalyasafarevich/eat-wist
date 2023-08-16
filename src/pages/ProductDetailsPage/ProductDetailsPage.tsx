@@ -13,7 +13,7 @@ const ProductDetailsPage: FC = () => {
 
 	const params = useParams();
 	const dispatch: any = useDispatch();
-
+console.log(params)
 	useEffect(() => {
 		dispatch(getProduct(`${params.id}`));
 	}, []);
@@ -21,6 +21,7 @@ const ProductDetailsPage: FC = () => {
 	return (
 		<div className="product-details">
 			<div className="wrap">
+
 				{productState ? <SingleFood food={productState} /> : <>loading</>}
 			</div>
 		</div>
