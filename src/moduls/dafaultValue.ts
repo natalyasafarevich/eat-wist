@@ -2,7 +2,7 @@ import {I} from "./Generics";
 import {DataTypeProps} from "./types-interfaces/types";
 
 // ids for SingleFood
-export const idsProduct: Array < I > = [
+export const idsProduct: Array<I> = [
   {
     id: 1004
   }, {
@@ -11,12 +11,15 @@ export const idsProduct: Array < I > = [
     id: 1005
   }
 ];
-export const caloriesId: Array < I > = [{
-    id: 2047
+export const caloriesId: Array<I> = [{
+    id: 2047 || 1008
   }];
+export const caloriesIdSurvey = [{
+    id: 1008
+  }]
 
 // for NutritionCard
-export const exceptionIds: Array < number > = [
+export const exceptionIds: Array<number> = [
   2045,
   2039,
   2043,
@@ -26,7 +29,7 @@ export const exceptionIds: Array < number > = [
 
 
 // Description Data Type
-const dataType: Array < DataTypeProps > = [
+const dataType: Array<DataTypeProps> = [
   {
     name: "Foundation",
     desc: `Data and metadata on individual samples of commodity/commodity-derived 

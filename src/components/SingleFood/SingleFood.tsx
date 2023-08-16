@@ -1,7 +1,11 @@
 import React, { FC, useState, useCallback, useEffect } from "react";
 import { FoodNutrients } from "../../moduls/types-interfaces/Product";
 import { foodFilter } from "../../helper/filter";
-import { caloriesId, idsProduct } from "../../moduls/dafaultValue";
+import {
+	caloriesId,
+	caloriesIdSurvey,
+	idsProduct,
+} from "../../moduls/dafaultValue";
 import { FoodProps } from "../../moduls/types-interfaces/types";
 import "./SingleFood.scss";
 import Minerals from "../Minerals/Minerals";
@@ -13,19 +17,22 @@ const SingleFood: FC<FoodProps> = ({ food }) => {
 
 	const getDetailsValues = useCallback(() => {
 		let { foodNutrients } = food;
+		console.log(food);
 		const filteredDetails = foodFilter(foodNutrients, idsProduct);
 		return setMainDetails(filteredDetails);
 	}, [food]);
-
 	const getDetailsCalories = useCallback(() => {
 		let { foodNutrients } = food;
+		console.log(caloriesId);
 		const caloriesDetails = foodFilter(foodNutrients, caloriesId);
+		const calorieSurvey = foodFilter(foodNutrients, caloriesIdSurvey);
 
-		if (caloriesDetails.length > 0) {
+		if (caloriesDetails.length >= 1) {
 			const [singleObject] = caloriesDetails;
 			setCalories(singleObject.amount);
 		} else {
-			return false;
+			const [singleObject] = calorieSurvey;
+			setCalories(singleObject?.amount);
 		}
 	}, [food]);
 
