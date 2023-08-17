@@ -4,6 +4,7 @@ import {ListType} from '../store/foods-list/modules';
 const APP_KEY: string = 'IxaPMYvtMvBgpRYCRtBKydcd8OZ5PquSvgsikpkw';
 
 // API params
+// https://api.nal.usda.gov/fdc/v1/foods/search?api_key=IxaPMYvtMvBgpRYCRtBKydcd8OZ5PquSvgsikpkw&foodCategory=100261
 
 const dataType = 'dataType=Foundation';
 const page_size = '50';

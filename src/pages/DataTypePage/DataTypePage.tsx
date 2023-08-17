@@ -1,23 +1,35 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { foodList } from "../../store/foods-list/action";
 import DisplayFood from "../../components/DisplayFood/DisplayFood";
-import CardFood from "../../components/CardFood/CardFood";
 import { useParams } from "react-router-dom";
+import dataType from "../../moduls/dafaultValue";
+import { DataTypeProps } from "../../moduls/types-interfaces/types";
+import './DataType.scss'
 
 const DataTypePage: FC = () => {
+const [getData, setGetData] = useState<DataTypeProps>()
+
 	const dispatch: any = useDispatch();
 	const foodListState = useSelector((state: any) => state?.fList?.list);
 const params = useParams()
-console.log(params.name)
+
+
+
+
 	useEffect(() => {
 		dispatch(foodList("1", `${params.name}`));
+		const selectedDataType = dataType.find(item => item.name === params.name); 
+		setGetData(selectedDataType)
 	}, [dispatch]);
 
 	return (
 		<div className="data-type">
 			<div className="wrap">
+				<h1 className="data-type__title">{params.name}</h1>
+				<p className="data-type__desc">{getData?.desc}</p>
+				
 				{foodListState ? (
 					<DisplayFood foodListState={foodListState} />
 				) : (
