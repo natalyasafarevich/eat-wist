@@ -27,3 +27,8 @@ export default LinkProps
 export type ParamsType = {
 	name:string
 }
+
+// for DropdownData
+export type DropdownDataProps = {
+	currentData: (newValue: string) => void;
+};

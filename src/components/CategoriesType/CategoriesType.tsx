@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import "./CategoriesType.scss";
 import { NavLink } from "react-router-dom";
 
@@ -39,11 +39,6 @@ const CategoriesType: FC = () => {
 							</NavLink>
 						);
 					})}
-					<div className="categories-type__row">
-						{/* {category.foods.map((good: any) => {
-						return <CardFood card={good} />;
-					})} */}
-					</div>
 				</div>
 			</div>
 		</div>

@@ -1,8 +1,7 @@
 import React, { FC, useState } from "react";
-import dataType from "../moduls/dafaultValue";
+import dataType from "../../moduls/dafaultValue";
 import { Link } from "react-router-dom";
 import "./DataTypeCard.scss";
-
 
 const DataTypeCard: FC = () => {
 	const [isMove, setIsMove] = useState<boolean>(false);
@@ -16,7 +15,11 @@ const DataTypeCard: FC = () => {
 							<div className="data-card__content">
 								<div className="data-card__info">
 									<p className="data-card__title">{type.name}</p>
-									<Link className="data-card__link button-green" to={`/datatype/${type.name}`}>see more</Link>
+									<Link
+										className="data-card__link button-green"
+										to={`/datatype/${type.name}`}>
+										see more
+									</Link>
 								</div>
 							</div>
 						</div>

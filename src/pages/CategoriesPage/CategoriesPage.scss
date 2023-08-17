@@ -1,9 +1,10 @@
 .categories-page {
   // .categories-page__wrap
-
-  &__wrap {
+  &__box {
     display: flex;
     justify-content: space-between;
+  }
+  &__wrap {
   }
   &__row {
     max-width: 73%;

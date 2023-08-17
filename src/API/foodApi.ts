@@ -7,7 +7,7 @@ const APP_KEY: string = 'IxaPMYvtMvBgpRYCRtBKydcd8OZ5PquSvgsikpkw';
 // https://api.nal.usda.gov/fdc/v1/foods/search?api_key=IxaPMYvtMvBgpRYCRtBKydcd8OZ5PquSvgsikpkw&foodCategory=100261
 
 const dataType = 'dataType=Foundation';
-const page_size = '50';
+const page_size = '25';
 const sort_by = 'sortBy=dataType';
 const sort_order = 'sortOrder=asc';
 
@@ -20,8 +20,8 @@ export function getFood(foodId: string) {
   return axios.get(`https://api.nal.usda.gov/fdc/v1/food/${foodId}?api_key=${APP_KEY}`)
 }
 
-export const getFoodCategories = (category : string) => {
-  return axios.get(` https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${APP_KEY}&foodCategory=${category}`);
+export const getFoodCategories = (category : string,dataType :string) => {
+  return axios.get(` https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${APP_KEY}&dataType=${dataType}&foodCategory=${category}&pageNumber=1&pageSize=${page_size}`);
 }
 
 export function searchFood(value: string, page_number: string) {

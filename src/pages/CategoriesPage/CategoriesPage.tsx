@@ -6,9 +6,11 @@ import { useSelector } from "react-redux";
 import { foodCategory } from "../../store/categories/actions";
 import { useParams } from "react-router-dom";
 import CardFood from "../../components/CardFood/CardFood";
+import DropdownData from "../../components/DropdownData/DropdownData";
 
 const CategoriesPage: FC = () => {
-	const [nameCategory, setNameCategory] = useState<string>("All Categories");
+	const [nameCategory, setNameCategory] = useState<string>("");
+	const [dataType, getDataType] = useState<string>("Foundation");
 	const category = useSelector((state: any) => state.category.list);
 	const dispatch: any = useDispatch();
 	const params = useParams();
@@ -16,19 +18,28 @@ const CategoriesPage: FC = () => {
 	useEffect(() => {
 		const { name } = params;
 		setNameCategory(name as string);
-		dispatch(foodCategory(nameCategory));
-	}, [params]);
+		dispatch(
+			foodCategory(nameCategory=== "All Categories" ? "" : nameCategory, dataType )
+		);
+	}, [params, dataType,nameCategory]);
+
+	const currentData = (newValue: string) => {
+		getDataType(newValue);
+	};
 
 	return (
 		<div className="categories-page">
 			<div className="categories-page__wrap wrap ">
-				<div className="categories-page__aside">
-					<CategoriesType />
-				</div>
-				<div className="categories-page__row">
-					{category.foods.map((good: any) => {
-						return <CardFood card={good} />;
-					})}
+				<DropdownData currentData={currentData} />
+				<div className="categories-page__box">
+					<div className="categories-page__aside">
+						<CategoriesType />
+					</div>
+					<div className="categories-page__row">
+						{category.foods.map((good: any, i: number) => {
+							return <CardFood key={i} card={good} />;
+						})}
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 import "./HomePage.scss";
 import { Link } from "react-router-dom";
-import DataTypeCard from "../../DataTypeCard/DataTypeCard";
+import DataTypeCard from "../../components/DataTypeCard/DataTypeCard";
 
 const HomePage: FC = () => {
 	return (
@@ -23,7 +23,7 @@ const HomePage: FC = () => {
 					</div>
 					<div className="home-img"></div>
 				</div>
-				<DataTypeCard/>
+				<DataTypeCard />
 			</div>
 		</div>
 	);
