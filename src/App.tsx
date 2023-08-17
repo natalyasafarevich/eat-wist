@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import "./styles/var.css";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import DataTypePage from "./pages/DataTypePage/DataTypePage";
+import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
 
 function App() {
 	return (
@@ -14,7 +15,10 @@ function App() {
 			<Routes>
 				<Route path={"/"} element={<HomePage />} />
 				<Route path={"/datatype/:name"} element={<DataTypePage />} />
-				<Route path={"/datatype/:typename/:name/:id"} element={<ProductDetailsPage />} />
+				<Route path={"/:name/:id"} element={<ProductDetailsPage />} />
+				<Route path={"/categories/:name"} element={<CategoriesPage />} />
+
+				
 			</Routes>
 		</div>
 	);

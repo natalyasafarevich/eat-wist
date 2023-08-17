@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import {ListType} from '../store/foods-list/modules';
 
 const APP_KEY: string = 'IxaPMYvtMvBgpRYCRtBKydcd8OZ5PquSvgsikpkw';
@@ -12,13 +12,16 @@ const sort_by = 'sortBy=dataType';
 const sort_order = 'sortOrder=asc';
 
 
-
-export const getFoodsList = (page_number : string ,dataType:string)  => {
+export const getFoodsList = (page_number : string, dataType : string) => {
   return axios.get(`https://api.nal.usda.gov/fdc/v1/foods/list?dataType=${dataType}&pageSize=${page_size}&pageNumber=${page_number}&api_key=${APP_KEY}`);
 }
 
 export function getFood(foodId: string) {
   return axios.get(`https://api.nal.usda.gov/fdc/v1/food/${foodId}?api_key=${APP_KEY}`)
+}
+
+export const getFoodCategories = (category : string) => {
+  return axios.get(` https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${APP_KEY}&foodCategory=${category}`);
 }
 
 export function searchFood(value: string, page_number: string) {

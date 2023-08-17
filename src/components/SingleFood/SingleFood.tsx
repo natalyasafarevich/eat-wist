@@ -17,13 +17,12 @@ const SingleFood: FC<FoodProps> = ({ food }) => {
 
 	const getDetailsValues = useCallback(() => {
 		let { foodNutrients } = food;
-		console.log(food);
 		const filteredDetails = foodFilter(foodNutrients, idsProduct);
 		return setMainDetails(filteredDetails);
 	}, [food]);
+		
 	const getDetailsCalories = useCallback(() => {
 		let { foodNutrients } = food;
-		console.log(caloriesId);
 		const caloriesDetails = foodFilter(foodNutrients, caloriesId);
 		const calorieSurvey = foodFilter(foodNutrients, caloriesIdSurvey);
 

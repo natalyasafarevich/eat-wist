@@ -1,0 +1,20 @@
+.categories-page {
+  // .categories-page__wrap
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__row {
+    max-width: 73%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  // .categories-page__aside
+
+  &__aside {
+    max-width: 350px;
+    width: 100%;
+  }
+}

@@ -12,18 +12,7 @@ type CardFoodProps = {
 const CardFood: FC<CardFoodProps> = ({ card }) => {
 	const [editLink, setEditLink] = useState<string>("");
 	const [isHovered, setIsHovered] = useState<boolean>(false);
-	// const [isDataType, setIsDataType] = useState<any>();
 
-	// useEffect(() => {
-	//   const getInfoDataType = (currentData: string) => {
-	//     const result = dataType.filter((type) =>
-	//       type.name === currentData ? type : false
-	//     );
-	//     return result;
-	//   };
-	//   const getType = getInfoDataType(card.dataType)
-	// 	setIsDataType({...getType});
-	// }, [card.dataType]);
 
 	useEffect(() => {
 		const desc = combineWords(card.description);
@@ -38,7 +27,7 @@ const CardFood: FC<CardFoodProps> = ({ card }) => {
 	};
 
 	return (
-		<Link to={`${editLink}/${card.fdcId}/`} className="card-food">
+		<Link to={`/${editLink}/${card.fdcId}/`} className="card-food">
 			<span className="card-food__wrap">
 				<h2 className="card-food__title">{card.description}</h2>
 				<span className="card-food__desc">
@@ -47,7 +36,7 @@ const CardFood: FC<CardFoodProps> = ({ card }) => {
 				</span>
 				<span className="card-food__desc">
 					Brand Owner:
-					<b> {card.brandOwner ? card.brandOwner : "information is missing"}</b>
+					<b> {card?.brandOwner ? card.brandOwner : "information is missing"}</b>
 				</span>
 				<span
 					className="card-food__desc"

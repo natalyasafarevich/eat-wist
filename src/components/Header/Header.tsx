@@ -6,8 +6,8 @@ import LinkProps from "../../moduls/types-interfaces/types";
 
 const links: Array<LinkProps> = [
 	{
-		url: "/category",
-		name: "category",
+		url: "/categories/All Categories",
+		name: "categories",
 	},
 	{
 		url: "/recipes",

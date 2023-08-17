@@ -1,4 +1,4 @@
-type GeneralTypes = {
+export type GeneralTypes = {
   fdcId: number,
   description: string,
   publicationDate: string,
