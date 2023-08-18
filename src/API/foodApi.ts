@@ -24,6 +24,6 @@ export const getFoodCategories = (category : string, dataType : string) => {
   return axios.get(` https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${APP_KEY}&dataType=${dataType}&foodCategory=${category}&pageNumber=1&pageSize=${page_size}`);
 }
 
-export function searchFood(value : string, page_number : string) {
-  return axios.get(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${value}&dataType=Foundation,SR%20Legacy&pageSize=25&pageNumber=${page_number}&sortBy=lowercaseDescription.keyword&sortOrder=desc&brandOwner=${brand}&api_key=${APP_KEY}`)
+export function searchFood(value : string, page_number : string,dataType:string, sort:string) {
+  return axios.get(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${value}&dataType=${dataType}&pageSize=25&pageNumber=${page_number}&sortBy=${sort}&sortOrder=desc&brandOwner=${brand}&api_key=${APP_KEY}`)
 }

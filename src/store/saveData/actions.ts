@@ -1,7 +1,7 @@
 export const GET_SAVE_DATA = '/saveData/GET_SAVE_DATA';
 
 type DataType = {}
-export type GetSaveDataType = {
+export type getSaveDataType = {
   type: typeof GET_SAVE_DATA,
   data: DataType
 }

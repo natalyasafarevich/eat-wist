@@ -11,14 +11,14 @@ const Search: FC = () => {
 	const dispatch: any = useDispatch();
 
 	const handelClick = () => {
+		setInputValue("");
 		if (inputRef.current && inputRef.current.value.length > 1) {
 			const value = inputRef.current.value;
-			setInputValue("");
-			dispatch(getSearchFood(value, "1"));
+			dispatch(getSearchFood(value, "1", "Foundation",'d'));
 			return;
 		}
-		console.log("error");
-	};
+ 
+}
 
 	const handelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setInputValue(e.target.value);
@@ -41,7 +41,7 @@ const Search: FC = () => {
 					onClick={
 						inputValue.length > 1
 							? () => handelClick()
-							: (event) => event.preventDefault()
+							: (event) =>{ event.preventDefault(); console.log('error')}
 					}
 					to={`/search/${inputValue}`}
 					className="search__button button-green"
