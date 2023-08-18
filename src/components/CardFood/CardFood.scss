@@ -1,12 +1,13 @@
 .card-food {
-  margin: 0 15px 30px 0;
+  margin: 0 15px 30px ;
   max-width: 250px;
   width: 100%;
   display: block;
   border-radius: 25px;
   box-shadow: 0 -1px 10px 4px #dadada;
   color: var(--main-text-color);
-
+  min-height: 250px;
+  height: fit-content;
   &:hover {
     transform: scale(1.1);
   }

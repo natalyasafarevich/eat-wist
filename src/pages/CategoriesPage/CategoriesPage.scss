@@ -1,13 +1,29 @@
 .categories-page {
   // .categories-page__wrap
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  &__dropdown {
+    max-width: 250px;
+    width: 100%;
+  }
   &__box {
     display: flex;
     justify-content: space-between;
+    margin: 0 -15px;
+  }
+  &__tole {
+    font-size: 35px;
   }
   &__wrap {
   }
   &__row {
-    max-width: 73%;
+  
+    margin: 0 -15px; // max-width: 73%;
+    align-self: stretch;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -15,6 +31,7 @@
   // .categories-page__aside
 
   &__aside {
+    margin: 0 15px;
     max-width: 350px;
     width: 100%;
   }

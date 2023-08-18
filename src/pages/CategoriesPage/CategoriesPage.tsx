@@ -11,17 +11,32 @@ import DropdownData from "../../components/DropdownData/DropdownData";
 const CategoriesPage: FC = () => {
 	const [nameCategory, setNameCategory] = useState<string>("");
 	const [dataType, getDataType] = useState<string>("Foundation");
+
 	const category = useSelector((state: any) => state.category.list);
+	const saveData = useSelector((state: any) => state.saveData);
+
 	const dispatch: any = useDispatch();
 	const params = useParams();
+	const localSaveData = localStorage.getItem("saveData");
+
+	//save info in localStorage
+	useEffect(() => {
+		const { localData } = saveData;
+		localStorage.setItem("saveData", JSON.stringify(localData));
+	}, [saveData, localSaveData]);
 
 	useEffect(() => {
+		const data = JSON.parse(localSaveData as string);
 		const { name } = params;
-		setNameCategory(name as string);
-		dispatch(
-			foodCategory(nameCategory=== "All Categories" ? "" : nameCategory, dataType )
-		);
-	}, [params, dataType,nameCategory]);
+		const categoriesName = name as string;
+		setNameCategory(categoriesName);
+		if (!localSaveData) {
+			dispatch(foodCategory("", dataType));
+			return;
+		} else {
+			dispatch(foodCategory(categoriesName, data.dataType));
+		}
+	}, [params.name, dataType]);
 
 	const currentData = (newValue: string) => {
 		getDataType(newValue);
@@ -29,8 +44,14 @@ const CategoriesPage: FC = () => {
 
 	return (
 		<div className="categories-page">
-			<div className="categories-page__wrap wrap ">
-				<DropdownData currentData={currentData} />
+			<div className="categories-page__wrap wrap">
+				<div className="categories-page__inner">
+					<h1 className="categories-page__title"> {nameCategory}</h1>
+					<div className="categories-page__dropdown">
+						<DropdownData currentData={currentData} />
+					</div>
+				</div>
+
 				<div className="categories-page__box">
 					<div className="categories-page__aside">
 						<CategoriesType />
