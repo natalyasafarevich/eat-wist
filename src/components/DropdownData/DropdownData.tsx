@@ -1,10 +1,9 @@
 import React, { FC, useState, useEffect } from "react";
-import "./DropdownData.scss";
 import dataType from "../../moduls/dafaultValue";
 import { DropdownDataProps } from "../../moduls/types-interfaces/types";
 import { useDispatch } from "react-redux";
 import { getSaveData } from "../../store/saveData/actions";
-import { useSelector } from "react-redux";
+import "./DropdownData.scss";
 
 const DropdownData: FC<DropdownDataProps> = ({ currentData }) => {
 	const [dataName, setDataName] = useState<string>("Foundation");
@@ -13,8 +12,10 @@ const DropdownData: FC<DropdownDataProps> = ({ currentData }) => {
 	const localSaveData = localStorage.getItem("saveData");
 
 	useEffect(() => {
-		const {dataType} =JSON.parse(localSaveData as string)
-		setDataName(dataType)
+		if (localSaveData) {
+			const { dataType } = JSON.parse(localSaveData as string);
+			setDataName(dataType);
+		}
 	}, []);
 
 	useEffect(() => {

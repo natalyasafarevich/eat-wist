@@ -26,7 +26,6 @@ const CategoriesPage: FC = () => {
 	}, [saveData, localSaveData]);
 
 	useEffect(() => {
-		const data = JSON.parse(localSaveData as string);
 		const { name } = params;
 		const categoriesName = name as string;
 		setNameCategory(categoriesName);
@@ -34,9 +33,23 @@ const CategoriesPage: FC = () => {
 			dispatch(foodCategory("", dataType));
 			return;
 		} else {
+			const data = JSON.parse(localSaveData as string);
 			dispatch(foodCategory(categoriesName, data.dataType));
 		}
-	}, [params.name, dataType]);
+	}, [params.name, dataType, localSaveData]);
+	useEffect(() => {
+		const { name } = params;
+		const categoriesName = name as string;
+
+		if (!localSaveData) {
+			dispatch(foodCategory("", dataType));
+			return;
+		} else {
+			const data = JSON.parse(localSaveData as string);
+
+			dispatch(foodCategory(categoriesName, data.dataType));
+		}
+	}, []);
 
 	const currentData = (newValue: string) => {
 		getDataType(newValue);

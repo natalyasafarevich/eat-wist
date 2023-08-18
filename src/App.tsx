@@ -7,11 +7,13 @@ import "./styles/var.css";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import DataTypePage from "./pages/DataTypePage/DataTypePage";
 import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
+import Search from "./components/Search/Search";
 
 function App() {
 	return (
 		<div className="App">
 			<Header />
+			<Search/>
 			<Routes>
 				<Route path={"/"} element={<HomePage />} />
 				<Route path={"/datatype/:name"} element={<DataTypePage />} />
