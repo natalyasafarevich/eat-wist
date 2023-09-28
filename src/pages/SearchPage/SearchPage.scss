@@ -1,0 +1,47 @@
+.search-page {
+  // .search-page__wrap
+
+  &__wrap {
+  }
+
+  // .search-page__header
+
+  &__header {
+  }
+  .dropdown-data__title {
+    margin-bottom: 0;
+  }
+  // .search-page__box
+  &__dropdown {
+    max-width: 250px;
+    width: 100%;
+  }
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  // .search-page__title
+
+  &__title {
+    white-space: pre-line;
+  }
+
+  // .search-page__desc
+  &__info {
+    // max-width: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__desc {
+    max-width: 350px;
+    width: 100%;
+  }
+
+  // .search-page__body
+
+  &__body {
+  }
+}

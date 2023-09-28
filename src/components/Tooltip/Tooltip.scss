@@ -1,0 +1,32 @@
+.tooltip {
+  position: absolute;
+  top: -70px;
+  background:  var(--button-green-bg);
+
+  border-radius: 15px;
+  max-width:300px;
+  width:220px;
+  color: var(  --addition-text-color);
+
+  // .tooltip__wrap
+
+  &__wrap {
+    padding: 10px 5px;
+  }
+
+  // .tooltip__title
+
+  &__title {
+    font-weight: 500;
+  }
+
+  // .tooltip__desc
+
+  &__desc {
+    font-style: italic;
+    display: block;
+    // margin-top: 5px;
+    font-size: 10px;
+    line-height: 15px;
+  }
+}

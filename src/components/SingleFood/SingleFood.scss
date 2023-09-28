@@ -1,0 +1,145 @@
+.single-food {
+  // .single-food__wrap
+
+  &__wrap {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  // .single-food__header
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--addition-grey-color);
+  }
+
+  // .single-food__image
+
+  &__image {
+    margin-right: 50px;
+    max-width: 120px;
+    width: 100%;
+    height: 120px;
+    background: center/cover no-repeat url(../../imgs/default.png);
+    border-radius: 10px;
+  }
+
+  // .single-food__title
+
+  &__title {
+    color: var(--addition-dark-color);
+  }
+
+  // .single-food__box
+
+  &__box {
+    margin: 0 15px;
+  }
+
+  // .single-food__detail
+
+  &__detail {
+    // width: 50%;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__row {
+    margin: 0 -15px;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__table {
+    // width: 50%;
+    max-width: 100%;
+    margin-top: 35px;
+    background-color: var(--button-grey-bg);
+    border-radius: 15px;
+
+    display: flex;
+    .main-values__box {
+      margin-bottom: 0;
+    }
+    .main-values__box,
+    .main-values__inner {
+      height: 100%;
+    }
+    .main-values__name {
+      text-align: center;
+      height: 50%;
+      border: 1px solid var(--addition-text-color);
+      padding: 10px;
+    }
+    .main-values__value {
+      border: 1px solid var(--addition-text-color);
+      height: 50%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    .single-food__info {
+      width: 33.33%;
+    }
+    .main-values__box {
+      display: block;
+    }
+  }
+  &__cals {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    span {
+      display: block;
+      color: var(--addition-grey-color);
+    }
+  }
+}
+.main-values {
+  &__box {
+    display: flex;
+    margin-bottom: 15px;
+  }
+
+  &__name {
+    font-weight: 500;
+    color: var(--addition-grey-color);
+    padding-left: 5px;
+  }
+
+  &__value {
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+    &_1003 {
+      &::before {
+        background-color: var(--button-green-bg);
+      }
+    }
+    &_1004 {
+      &::before {
+        background-color: red;
+      }
+    }
+    &_1005 {
+      &::before {
+        background-color: var(--addition-yellow-color);
+      }
+    }
+  }
+}

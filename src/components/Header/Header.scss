@@ -1,0 +1,77 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  &__wrap {
+    background: var(--addition-text-color);
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 0 -1px 10px 4px #dadada;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 50px;
+    align-items: center;
+  }
+
+  // .header__logo
+
+  &__logo {
+    height: 60px;
+    max-width: 220px;
+    width: 100%;
+    display: block;
+    background: center/cover no-repeat url(../../imgs/f0411517-904a-4fd5-b941-4fa8bf4e3711.png);
+  }
+
+  // .header__list
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  // .header__link
+
+  &__link {
+    color: var(--main-text-color);
+    padding: 0.5rem 1rem;
+    text-transform: capitalize;
+  }
+
+  // .header__login
+  &__auth {
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    margin: 0 -5px;
+  }
+  &__button {
+    margin: 0 5px;
+    display: block;
+    border-radius: 25px;
+    border: 0 none;
+    padding: 10px 12px;
+    max-width: 150px;
+    width: 100%;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    &_login {
+      color: var(--addition-text-color);
+      background: var(--button-green-bg);
+    }
+
+    &_sign-up {
+      background: var(--button-grey-bg);
+      color: var(--main-text-color);
+    }
+  }
+
+  // .header__sign-up
+}
+.nav {
+  font-size: 17px;
+}
