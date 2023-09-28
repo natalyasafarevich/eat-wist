@@ -7,13 +7,15 @@ import { foodCategory } from "../../store/categories/actions";
 import { useParams } from "react-router-dom";
 import CardFood from "../../components/CardFood/CardFood";
 import DropdownData from "../../components/DropdownData/DropdownData";
+import { CategoriesInitialStateProps } from "../../moduls/types-interfaces/categoriesType";
+import { RootState } from "../../store/store";
 
 const CategoriesPage: FC = () => {
 	const [nameCategory, setNameCategory] = useState<string>("");
 	const [dataType, getDataType] = useState<string>("Foundation");
 
-	const category = useSelector((state: any) => state.category.list);
-	const saveData = useSelector((state: any) => state.saveData);
+	const category = useSelector((state: RootState) => state.category.list);
+	const saveData = useSelector((state: RootState) => state.saveData);
 
 	const dispatch: any = useDispatch();
 	const params = useParams();
@@ -70,7 +72,7 @@ const CategoriesPage: FC = () => {
 						<CategoriesType />
 					</div>
 					<div className="categories-page__row">
-						{category.foods.map((good: any, i: number) => {
+						{category?.foods.map((good: any, i: number) => {
 							return <CardFood key={i} card={good} />;
 						})}
 					</div>

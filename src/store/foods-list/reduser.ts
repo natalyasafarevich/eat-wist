@@ -4,6 +4,7 @@ import { InitialStateProps } from "./modules";
 
 const initialState: InitialStateProps = {
   list: []
+
 }
 
 export const FoodListReduser = (state = initialState, action : ActionsType  ):InitialStateProps  => {

@@ -7,7 +7,7 @@ export const SET_FOOD_LIST = 'trailers/SET_MAIN_PAGE';
 
 export type FoodListActionType = {
   type: typeof SET_FOOD_LIST,
-  list: Array < ListType > |null,
+  list: Array < ListType > ,
 }
 
 export type ActionsType = FoodListActionType;

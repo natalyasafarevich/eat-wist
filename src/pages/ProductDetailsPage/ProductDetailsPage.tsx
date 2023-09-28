@@ -7,9 +7,10 @@ import { getProduct } from "../../store/product/action";
 import { useSelector } from "react-redux";
 import { Product } from "../../moduls/types-interfaces/Product";
 import SingleFood from "../../components/SingleFood/SingleFood";
+import { RootState } from "../../store/store";
 
 const ProductDetailsPage: FC = () => {
-	const productState = useSelector((state: any) => state.descProd.product);
+	const productState = useSelector((state: RootState) => state.descProd.product);
 
 	const params = useParams();
 	const dispatch: any = useDispatch();

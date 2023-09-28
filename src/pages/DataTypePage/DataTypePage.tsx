@@ -7,12 +7,13 @@ import { useParams } from "react-router-dom";
 import dataType from "../../moduls/dafaultValue";
 import { DataTypeProps } from "../../moduls/types-interfaces/types";
 import './DataType.scss'
+import { RootState } from "../../store/store";
 
 const DataTypePage: FC = () => {
 const [getData, setGetData] = useState<DataTypeProps>()
 
 	const dispatch: any = useDispatch();
-	const foodListState = useSelector((state: any) => state?.fList?.list);
+	const foodListState = useSelector((state: RootState) => state?.fList?.list);
 const params = useParams()
 
 

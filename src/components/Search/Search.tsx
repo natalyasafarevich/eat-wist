@@ -1,20 +1,24 @@
 import React, { FC, useEffect, useState, useRef } from "react";
 import "./Search.scss";
-import { useDispatch } from "react-redux";
-import { getSearchFood } from "../../store/searchFood/actions";
+import { useDispatch } from 'react-redux';
+import { Dispatch } from 'redux';
+import { getSearchFood, ActionType } from '../../store/searchFood/actions'; // Замените 'your-actions' на путь к вашим экшенам
+
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+// import { AppDispatch } from "../../store/store";
 const Search: FC = () => {
 	const [inputValue, setInputValue] = useState<string>("");
 	const inputRef = useRef<HTMLInputElement>(null);
-	const dispatch: any = useDispatch();
+	const dispatch:Dispatch<any> = useDispatch()
 
 	const handelClick = () => {
 		setInputValue("");
 		if (inputRef.current && inputRef.current.value.length > 1) {
 			const value = inputRef.current.value;
-			dispatch(getSearchFood(value, "1", "Foundation",'d'));
+			dispatch(getSearchFood(value, "1", "Foundation", 'dataType.keyword'));
+
 			return;
 		}
  
@@ -52,3 +56,4 @@ const Search: FC = () => {
 };
 
 export default Search;
+      

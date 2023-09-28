@@ -6,15 +6,21 @@ export type FoodNutrientsType = {
   number: string | null,
   unitName: string
 }
+type foodSearchCriteriaT = {
+  query: string
+}
 export type ListType = {
+  foodSearchCriteria?: foodSearchCriteriaT,
   fdcId: number,
-  description: string ,
+  description: string,
   brandOwner: string | null,
-  dataType: string ,
+  dataType: string,
   foodNutrients: Array < FoodNutrientsType >,
   gtinUpc: string,
-  publicationDate: string
+  publicationDate: string,
+  // foods: Array < any >
 }
 export type InitialStateProps = {
-  list: Array < ListType > | null
+  list: Array < ListType > ,
+  // foods?:Array < ListType > | null,
 }

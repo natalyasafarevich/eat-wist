@@ -32,3 +32,9 @@ export type ParamsType = {
 export type DropdownDataProps = {
 	currentData: (newValue: string) => void;
 };
+// for Search page
+export  type transmittedParametersT = {
+	sortBy: string;
+	sortOrder: string;
+	dataType: string;
+};

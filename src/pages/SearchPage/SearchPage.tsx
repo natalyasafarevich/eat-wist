@@ -8,41 +8,44 @@ import DataTypeCard from "../../components/DataTypeCard/DataTypeCard";
 import DropdownData from "../../components/DropdownData/DropdownData";
 import { getSaveData } from "../../store/saveData/actions";
 import MainDropDown from "../../components/MainDropDown/MainDropDown";
+import { transmittedParametersT } from "../../moduls/types-interfaces/types";
+import { sortInfo, sortOrder } from "../../moduls/dafaultValue";
+import { RootState } from "../../store/store";
+import CardFood from "../../components/CardFood/CardFood";
 
-const info = {
-	label: "sort By:",
-  title:"lowercaseDescription.keyword",
-	items: [
-		{
-			name: " dataType.keyword",
-		},
-		{
-			name: "lowercaseDescription.keyword",
-		},
-		{
-			name: "fdcId",
-		},
-		{
-			name: "publishedDate",
-		},
-	],
-};
+
+
 const SearchPage: FC = () => {
 	const [dataType, setDataType] = useState<string>("");
 	const [sort, setSort] = useState<string>("");
+	const [transmittedParameters, setTransmittedParameters] =
+		useState<transmittedParametersT>({
+			sortBy: "lowercaseDescription.keyword",
+			sortOrder: "",
+			dataType: dataType,
+		});
 	const params = useParams();
 	const dispatch: any = useDispatch();
 
-	const saveData = useSelector((state: any) => state.saveData);
-	const search = useSelector((state: any) => state.searchFood.list);
+	const saveData = useSelector((state: RootState) => state.saveData);
+	const search = useSelector((state:RootState) => state.searchFood.list);
 
-	const { foodSearchCriteria } = search;
 
+
+
+console.log( search)
 	const localSaveData = localStorage.getItem("saveData");
 	const data = localStorage.getItem("saveData");
 
+	useEffect(() => {
+		localStorage.setItem(
+			"transmittedParameters",
+			JSON.stringify(transmittedParameters)
+		);
+	}, [transmittedParameters]);
 	const currentData = (newValue: string) => {
 		setDataType(newValue);
+		setTransmittedParameters((prev) => ({ ...prev, dataType: newValue }));
 	};
 	//save in localStorage
 	useEffect(() => {
@@ -51,17 +54,17 @@ const SearchPage: FC = () => {
 	}, [saveData, localSaveData]);
 
 	useEffect(() => {
-		console.log(sort)
+		// console.log(sort);
 		if (params.value && dataType?.length !== 0) {
 			dispatch(getSaveData({ dataType: dataType }));
 			dispatch(getSearchFood(params.value as string, "1", dataType, sort.trim()));
 		}
-	}, [dataType,sort]);
+	}, [dataType, sort]);
 
-
-	const getSort = (val:string)=>{
-		setSort(val)
-	}
+	// const getSort = (val: string) => {
+	// 	setSort(val);
+	// 	console.log(sort);
+	// };
 	return (
 		<div className="search-page">
 			{sort}
@@ -69,25 +72,42 @@ const SearchPage: FC = () => {
 				<div className="search-page__header">
 					<div className="search-page__box">
 						<h1 className="search-page__title">
-							Search results for "{foodSearchCriteria?.query}"
+							{/* Search results for "{foodSearchCriteria?.query}" */}
 						</h1>
 					</div>
 					<div className="search-page__info">
 						<div className="search-page__desc">
-						
-							<MainDropDown info={info} getSort={getSort}/>
-							<span> {foodSearchCriteria?.sortBy}</span>
+							{/* <MainDropDown
+								info={sortInfo}
+								getSort={(e) =>
+									setTransmittedParameters((prev) => ({ ...prev, sortBy: e }))
+								}
+							/> */}
+							{/* <span> {foodSearchCriteria?.sortBy}</span> */}
 						</div>
-						<p className="search-page__desc">
-							sort Order
-							<span>:{foodSearchCriteria?.sortOrder}</span>
-						</p>
+						<div className="search-page__desc">
+							{/* <MainDropDown
+								info={sortOrder}
+								getSort={(e) =>
+									setTransmittedParameters((prev) => ({ ...prev, sortOrder: e }))
+								}
+							/> */}
+							{/* <span>:{foodSearchCriteria?.sortOrder}</span> */}
+						</div>
 						<div className="search-page__dropdown">
-							<DropdownData currentData={currentData}  />
+							{/* <DropdownData currentData={currentData} /> */}
 						</div>
 					</div>
 				</div>
-				<div className="search-page__body"></div>
+				<div className="search-page__body">
+					{/* {foods.map(i,index)=>(
+						<p className="d" key={index}>{i}</p>
+					)} */}
+					{/* {foods.map((card,index)=>{
+						return<CardFood key={index}  card={card}></CardFood>
+					})} */}
+					
+				</div>
 			</div>
 		</div>
 	);

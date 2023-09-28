@@ -48,3 +48,40 @@ const dataType: Array<DataTypeProps> = [
 
 
 export default dataType;
+
+
+
+// sort of search
+export const sortOrder = {
+	label: "sort Order:",
+	title: "---",
+	items: [
+		{
+			name: " ---",
+		},
+		{
+			name: "asc",
+		},
+		{
+			name: "desc",
+		},
+	],
+};
+export const sortInfo = {
+	label: "sort By:",
+	title: "lowercaseDescription.keyword",
+	items: [
+		{
+			name: " dataType.keyword",
+		},
+		{
+			name: "lowercaseDescription.keyword",
+		},
+		{
+			name: "fdcId",
+		},
+		{
+			name: "publishedDate",
+		},
+	],
+};
