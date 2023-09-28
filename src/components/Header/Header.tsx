@@ -1,23 +1,8 @@
 import React, { FC } from "react";
 import { Link, Route } from "react-router-dom";
 import "./Header.scss";
-import LinkProps from "../../moduls/types-interfaces/types";
+import { HEADER_ITEMS } from "../../constants/constants";
 
-
-const links: Array<LinkProps> = [
-	{
-		url: "/categories/All Categories",
-		name: "categories",
-	},
-	{
-		url: "/recipes",
-		name: "recipes",
-	},
-	{
-		url: "/demo",
-		name: "demo",
-	},
-];
 
 const Header: FC = () => {
 	return (
@@ -26,7 +11,7 @@ const Header: FC = () => {
 				<Link to={"/"} className="header__logo"></Link>
 				<nav className="nav">
 					<ul className="header__list">
-						{links.map((link) => {
+						{HEADER_ITEMS.map((link) => {
 							return (
 								<li key={link.url}>
 									<Link className="header__link" to={link.url}>

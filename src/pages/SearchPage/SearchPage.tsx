@@ -12,8 +12,7 @@ import { transmittedParametersT } from "../../moduls/types-interfaces/types";
 import { sortInfo, sortOrder } from "../../moduls/dafaultValue";
 import { RootState } from "../../store/store";
 import CardFood from "../../components/CardFood/CardFood";
-
-
+import { ERROR_SEARCH } from "../../constants/constants";
 
 const SearchPage: FC = () => {
 	const [dataType, setDataType] = useState<string>("");
@@ -28,12 +27,10 @@ const SearchPage: FC = () => {
 	const dispatch: any = useDispatch();
 
 	const saveData = useSelector((state: RootState) => state.saveData);
-	const search = useSelector((state:RootState) => state.searchFood.list);
+	const search = useSelector((state: RootState) => state.searchFood.list);
 
-
-
-
-console.log( search)
+	const { foodSearchCriteria, foods } = search;
+	console.log(search);
 	const localSaveData = localStorage.getItem("saveData");
 	const data = localStorage.getItem("saveData");
 
@@ -54,12 +51,12 @@ console.log( search)
 	}, [saveData, localSaveData]);
 
 	useEffect(() => {
-		// console.log(sort);
+		dispatch(getSearchFood(params.value as string, "1", dataType, sort.trim()));
 		if (params.value && dataType?.length !== 0) {
 			dispatch(getSaveData({ dataType: dataType }));
 			dispatch(getSearchFood(params.value as string, "1", dataType, sort.trim()));
 		}
-	}, [dataType, sort]);
+	}, []);
 
 	// const getSort = (val: string) => {
 	// 	setSort(val);
@@ -72,7 +69,7 @@ console.log( search)
 				<div className="search-page__header">
 					<div className="search-page__box">
 						<h1 className="search-page__title">
-							{/* Search results for "{foodSearchCriteria?.query}" */}
+							Search results for "{foodSearchCriteria?.query}"
 						</h1>
 					</div>
 					<div className="search-page__info">
@@ -83,7 +80,7 @@ console.log( search)
 									setTransmittedParameters((prev) => ({ ...prev, sortBy: e }))
 								}
 							/> */}
-							{/* <span> {foodSearchCriteria?.sortBy}</span> */}
+							<span> {foodSearchCriteria?.sortBy}</span>
 						</div>
 						<div className="search-page__desc">
 							{/* <MainDropDown
@@ -92,7 +89,7 @@ console.log( search)
 									setTransmittedParameters((prev) => ({ ...prev, sortOrder: e }))
 								}
 							/> */}
-							{/* <span>:{foodSearchCriteria?.sortOrder}</span> */}
+							<span>:{foodSearchCriteria?.sortOrder}</span>
 						</div>
 						<div className="search-page__dropdown">
 							{/* <DropdownData currentData={currentData} /> */}
@@ -103,10 +100,23 @@ console.log( search)
 					{/* {foods.map(i,index)=>(
 						<p className="d" key={index}>{i}</p>
 					)} */}
-					{/* {foods.map((card,index)=>{
-						return<CardFood key={index}  card={card}></CardFood>
-					})} */}
-					
+					{foods.length === 0 ? (
+						<div className="search-page__error">
+							<p>
+								{ERROR_SEARCH.title}
+								<ul>
+									{ERROR_SEARCH.text.map((p:any, i) => (
+										<li key={i}>{p}</li>
+									))}
+								</ul>
+							</p>
+						</div>
+					) : (
+						foods.map((card, index) => {
+							return <CardFood key={index} card={card}></CardFood>;
+						})
+					)}
+					{}
 				</div>
 			</div>
 		</div>
