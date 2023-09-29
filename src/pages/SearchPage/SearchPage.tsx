@@ -69,7 +69,7 @@ const SearchPage: FC = () => {
 				<div className="search-page__header">
 					<div className="search-page__box">
 						<h1 className="search-page__title">
-							Search results for "{foodSearchCriteria?.query}"
+							Search results for "<span>{foodSearchCriteria?.query}</span>":
 						</h1>
 					</div>
 					<div className="search-page__info">
@@ -89,7 +89,7 @@ const SearchPage: FC = () => {
 									setTransmittedParameters((prev) => ({ ...prev, sortOrder: e }))
 								}
 							/> */}
-							<span>:{foodSearchCriteria?.sortOrder}</span>
+							{/* <span>:{foodSearchCriteria?.sortOrder}</span> */}
 						</div>
 						<div className="search-page__dropdown">
 							{/* <DropdownData currentData={currentData} /> */}
@@ -101,22 +101,20 @@ const SearchPage: FC = () => {
 						<p className="d" key={index}>{i}</p>
 					)} */}
 					{foods.length === 0 ? (
-						<div className="search-page__error">
-							<p>
-								{ERROR_SEARCH.title}
-								<ul>
-									{ERROR_SEARCH.text.map((p:any, i) => (
-										<li key={i}>{p}</li>
-									))}
-								</ul>
-							</p>
+						<div className="search-page__error space-padding">
+							<h2>{ERROR_SEARCH.title}</h2>
+							<ul>
+								<li>Make sure you spell the keywords correctly.</li>
+								<li>Try using other synonyms or similar terms.</li>
+								<li>See if you got any typos.</li>
+								<li>Refine the query by adding additional options or filters.</li>
+							</ul>
 						</div>
 					) : (
 						foods.map((card, index) => {
 							return <CardFood key={index} card={card}></CardFood>;
 						})
 					)}
-					{}
 				</div>
 			</div>
 		</div>

@@ -25,6 +25,10 @@
   // .search-page__title
 
   &__title {
+    span {
+      font-weight: 600;
+    }
+    font-weight: 400;
     white-space: pre-line;
   }
 
@@ -43,5 +47,31 @@
   // .search-page__body
 
   &__body {
+  }
+
+  // .search-page__error
+
+  &__error {
+    h2 {
+      max-width: 800px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    ul {
+      li {
+        font-size: 19px;
+        margin-bottom: 10px;
+        &::before {
+          content: "";
+          display: inline-block;
+          vertical-align: middle;
+          width: 6px;
+          height: 6px;
+          margin-right: 15px;
+          border-radius: 50%;
+          background-color: var(--addition-dark-color);
+        }
+      }
+    }
   }
 }
