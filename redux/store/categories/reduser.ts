@@ -1,3 +1,4 @@
+import {CategoriesInitialStateProps} from './../../../types/categoriesType';
 import {cloneDeep} from 'lodash';
 import {
   ActionsType,
@@ -6,20 +7,21 @@ import {
 // import {InitialStateProps} from '../foods-list/modules';
 // import {CategoriesInitialStateProps} from '../../moduls/types-interfaces/categoriesType';
 
-const initialState = {
-  list: {
-    totalHits: 0,
-    currentPage: 0,
-    totalPages: 0,
-    pageList: [],
-    foods: [],
-  },
-};
+const initialState: CategoriesInitialStateProps =
+  {
+    list: {
+      totalHits: 0,
+      currentPage: 0,
+      totalPages: 0,
+      pageList: [],
+      foods: [],
+    },
+  };
 
 export const FoodCategoriesReduser = (
   state = initialState,
   action: ActionsType,
-) => {
+): CategoriesInitialStateProps => {
   switch (action.type) {
     case SET_FOOD_CATEGORY:
       const clone = cloneDeep(state);

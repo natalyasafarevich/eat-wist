@@ -1,6 +1,6 @@
 'use client';
 import {store} from '@/redux/store/store';
-import {Children, ReactNode} from 'react';
+import {ReactNode} from 'react';
 import {Provider} from 'react-redux';
 
 export const ProviderLayout = ({

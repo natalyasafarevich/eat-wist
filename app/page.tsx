@@ -13,13 +13,5 @@ import {
 import {foodCategory} from '@/redux/store/categories/actions';
 
 export default function Home() {
-  const dispatch: any = useDispatch();
-  const state = useSelector(
-    (state: AppDispatch) => state,
-  );
-  useEffect(() => {
-    dispatch(foodCategory('vegetable', ''));
-  }, []);
-  console.log(state);
   return <main className={styles.main}></main>;
 }
