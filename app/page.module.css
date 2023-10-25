@@ -1,19 +1,1 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
-
-.wrap {
-  max-width: 1440px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 50px 0;
-}
-.button-green {
-  color: var(--addition-text-color);
-  background: var(--button-green-bg);
-  border-radius: 25px;
-  border: 0 none;
-  padding: 10px 12px;
-  max-width: 150px;
-  width: 100%;
-  font-weight: 500;
-  text-transform: uppercase;
-}

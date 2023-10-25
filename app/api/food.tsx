@@ -27,7 +27,7 @@ export async function getFoodCategories(
   dataType: string,
 ) {
   const response = await fetch(
-    ` https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${API_KEY}&dataType=${dataType}
+    ` https://api.nal.usda.gov/fdc/v1/foods/search?api_key=IxaPMYvtMvBgpRYCRtBKydcd8OZ5PquSvgsikpkw&dataType=${dataType}
     &foodCategory=${category}&pageNumber=1&pageSize=${page_size}`,
   );
   return response.json();

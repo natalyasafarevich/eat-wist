@@ -8,6 +8,25 @@
   --button-green-bg: #6acc00;
   --button-grey-bg: #f2f4f8;
 }
+
+.wrap {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+.button-green {
+  color: var(--addition-text-color);
+  background: var(--button-green-bg);
+  border-radius: 25px;
+  border: 0 none;
+  padding: 10px 12px;
+  max-width: 150px;
+  width: 100%;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
