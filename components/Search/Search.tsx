@@ -1,20 +1,11 @@
 'use client';
-import React, {
-  FC,
-  useEffect,
-  useState,
-  useRef,
-} from 'react';
+import React, {FC, useState, useRef} from 'react';
 import './Search.scss';
 import {useDispatch} from 'react-redux';
 import {Dispatch} from 'redux';
-
-import {useSelector} from 'react-redux';
 import {getSearchFood} from '@/redux/store/searchFood/actions';
 import Link from 'next/link';
-// import { Link } from "react-router-dom";
 
-// import { AppDispatch } from "../../store/store";
 const Search: FC = () => {
   const [inputValue, setInputValue] =
     useState<string>('');
@@ -59,7 +50,6 @@ const Search: FC = () => {
           className='search__input'
           placeholder='Search..'
         />
-
         <Link
           onClick={
             inputValue.length > 1

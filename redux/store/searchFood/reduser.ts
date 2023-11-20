@@ -4,7 +4,7 @@ import {
   GET_SEARCH_FOOD,
 } from './actions';
 
-import {ListType} from '../categories/modules';
+import {ListType} from '../categories/types';
 
 type FoodSearchCriteriaT = {
   query: string;

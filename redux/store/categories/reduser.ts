@@ -4,8 +4,6 @@ import {
   ActionsType,
   SET_FOOD_CATEGORY,
 } from './actions';
-// import {InitialStateProps} from '../foods-list/modules';
-// import {CategoriesInitialStateProps} from '../../moduls/types-interfaces/categoriesType';
 
 const initialState: CategoriesInitialStateProps =
   {

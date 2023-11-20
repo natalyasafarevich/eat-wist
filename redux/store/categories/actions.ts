@@ -1,11 +1,7 @@
-// import {getFoodCategories} from "../../API/foodApi";
 import {getFoodCategories} from '@/app/api/food';
 import {CategoriesType} from '@/types/categoriesType';
 import {Dispatch} from 'redux';
-// import { ListType } from "../foods-list/modules";
-// import { CategoriesType } from "../../moduls/types-interfaces/categoriesType";
 
-// dispatch - this's action/s
 export const SET_FOOD_CATEGORY =
   './categories/SET_FOOD_CATEGORY';
 
