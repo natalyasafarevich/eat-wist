@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import './Dropdown.scss';
 import {currentCountry} from '@/store/coutrues/actions';
 import {saveSelectedCountry} from '@/localStorageUtils';
+import {COUNTRIES} from '@/constants/constants';
 
 const Dropdown: FC = () => {
   let [isOpen, setIsOpen] = useState(false);
@@ -30,18 +31,13 @@ const Dropdown: FC = () => {
         <span className={isOpen ? 'active' : ''}>{store.label}</span>
         {isOpen && (
           <ul className='dropdown__box'>
-            <li className='dropdown__country' onClick={handelClick}>
-              World
-            </li>
-            <li className='dropdown__country' onClick={handelClick}>
-              Belarus
-            </li>
-            <li className='dropdown__country' onClick={handelClick}>
-              Poland
-            </li>
-            <li className='dropdown__country' onClick={handelClick}>
-              USA
-            </li>
+            {COUNTRIES.map((item, i) => {
+              return (
+                <li key={i} className='dropdown__country' onClick={handelClick}>
+                  {item.name}
+                </li>
+              );
+            })}
           </ul>
         )}
       </li>

@@ -10,3 +10,18 @@ export const HEADER_LINKS: Array<Header> = [
     url: '/about',
   },
 ];
+
+export const COUNTRIES = [
+  {
+    name: 'World',
+  },
+  {
+    name: 'USA',
+  },
+  {
+    name: 'Poland',
+  },
+  {
+    name: 'Belarus',
+  },
+];
