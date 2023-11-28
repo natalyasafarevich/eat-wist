@@ -9,7 +9,7 @@
 
   &__item--main {
     span {
-      &.active {
+      &.active::after {
         transform: rotate(360deg);
       }
       &::after {
@@ -23,6 +23,7 @@
         background: no-repeat url(/arrow.svg);
         transform: rotate(180deg);
       }
+      cursor: pointer;
       padding: 8px 16px;
       display: flex;
       align-items: center;

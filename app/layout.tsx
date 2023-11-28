@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import {Mulish} from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header/Header';
+import ProviderWrap from '@/components/ProviderWrap/ProviderWrap';
 
 const mulish = Mulish({subsets: ['latin'], weight: ['500']});
 
@@ -12,11 +13,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang='en'>
-      <body className={mulish.className}>
-        <Header />
-        <main>{children}</main>
-      </body>
-    </html>
+    <ProviderWrap>
+      <html lang='en'>
+        <body className={mulish.className}>
+          <Header />
+          <main>{children}</main>
+        </body>
+      </html>
+    </ProviderWrap>
   );
 }
