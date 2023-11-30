@@ -1,11 +1,10 @@
 import {currentCountry} from '@/store/coutrues/actions';
 import {cloneDeep} from 'lodash';
 import {ActionsType, COUNTRY, CountryType} from './actions';
-import {getSelectedCountry} from '@/localStorageUtils';
+let selectedCountry = localStorage.getItem('selectedCountry');
 
-let saveCountry = getSelectedCountry();
 const defaultState: CountryType = {
-  label: saveCountry || 'World',
+  label: JSON.parse(selectedCountry as string).country,
   isOpen: false,
 };
 

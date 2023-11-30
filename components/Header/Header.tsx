@@ -47,11 +47,14 @@ const Header: FC = () => {
             <div className='header__auth'>
               <Link
                 href={'/login'}
-                className='header__button button-transparent '
+                className='header__button header__button_login'
               >
                 Login
               </Link>
-              <Link href={'/sing-up'} className='header__button button-green '>
+              <Link
+                href={'/sing-up'}
+                className='header__button header__button_sign-up'
+              >
                 Sing up
               </Link>
             </div>

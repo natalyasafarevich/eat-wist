@@ -39,7 +39,7 @@
     // justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 267px;
+    max-width: 371px;
     li {
       margin: 0 15px;
     }
@@ -57,25 +57,44 @@
   &__link {
     color: var(--light-font-dark);
     font-size: 15px;
-    font-weight: 600;
+    // font-weight: 600;
   }
 
   // .header__auth
 
   &__auth {
     margin: 0 15px;
-    display: flex;
-    justify-content: space-between;
-    max-width: 280px;
+    max-width: 250px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+
+    // display: flex;
+    // justify-content: space-between;
+    // max-width: 280px;
+    // width: 100%;
+    border-radius: 4px;
+    background: #79cabe;
   }
 
   // .header__button
 
   &__button {
-    margin: 0 5px;
-    // max-width: 180px;
-    // width: 100%;/
+    text-align: center;
+    max-width: 125px;
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 800;
+    &_login {
+      border-radius: 4px;
+      background: #fff;
+      margin: 1px;
+      color: var(--light-colors-primary);
+    }
+    &_sign-up {
+      color: var(--light-font-white);
+    }
     // .header__button_border
   }
 }
