@@ -1,0 +1,100 @@
+.header {
+  // .header__wrap
+
+  &__wrap {
+    padding: 40px 0;
+    // background: center/cover no-repeat url(/header-bg.svg);
+  }
+
+  // .header__row
+
+  &__row {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -15px;
+  }
+
+  // .header__box
+
+  &__box {
+    max-width: 470px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    margin: 0 15px;
+  }
+
+  // .header__logo
+
+  &__logo {
+    margin-right: 40px;
+  }
+
+  // .header__nav
+
+  &__nav {
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 371px;
+    li {
+      margin: 0 15px;
+    }
+  }
+
+  // .header__list
+
+  &__list {
+    margin: 0 -15px;
+    display: flex;
+  }
+
+  // .header__link
+
+  &__link {
+    color: var(--light-font-dark);
+    font-size: 15px;
+    // font-weight: 600;
+  }
+
+  // .header__auth
+
+  &__auth {
+    margin: 0 15px;
+    max-width: 250px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    // display: flex;
+    // justify-content: space-between;
+    // max-width: 280px;
+    // width: 100%;
+    border-radius: 4px;
+    background: #79cabe;
+  }
+
+  // .header__button
+
+  &__button {
+    text-align: center;
+    max-width: 125px;
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 800;
+    &_login {
+      border-radius: 4px;
+      background: #fff;
+      margin: 1px;
+      color: var(--light-colors-primary);
+    }
+    &_sign-up {
+      color: var(--light-font-white);
+    }
+    // .header__button_border
+  }
+}

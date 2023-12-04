@@ -1,0 +1,78 @@
+.dropdown {
+  position: relative;
+  // .dropdown__item
+
+  &__item {
+  }
+
+  // .dropdown__item--main
+
+  &__item--main {
+    span {
+      &.active::after {
+        transform: rotate(360deg);
+      }
+      &::after {
+        content: "";
+        margin-left: 6px;
+        width: 18px;
+        height: 18px;
+        min-width: 18px;
+        display: inline-block;
+        vertical-align: middle;
+        background: no-repeat url(/arrow.svg);
+        transform: rotate(180deg);
+      }
+      cursor: pointer;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      color: var(--light-colors-primary);
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: #f5f4fb;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 20px;
+    }
+  }
+
+  // .dropdown__box
+
+  &__box {
+    li {
+      &:hover {
+        background: #f5f4fb;
+      }
+      cursor: pointer;
+
+      margin: 0;
+      padding: 8px 16px;
+    }
+    padding: 8px 0;
+    position: absolute;
+    top: 43px;
+    left: 0;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: var(--light-font-white);
+    // display: none;
+  }
+
+  // .dropdown__country
+
+  &__country {
+    margin: 0;
+    // .dropdown__country_by
+
+    &_by {
+    }
+
+    // .dropdown__country_pl
+
+    &_pl {
+    }
+  }
+}
