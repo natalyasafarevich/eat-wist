@@ -1,0 +1,43 @@
+.product-card {
+  display: block;
+  // margin: 0 12px 0px;
+  border-radius: 8px;
+  height: 100%;
+  border-radius: 30px;
+  border: 2px solid #bfbaba;
+  padding: 16px 16px 16px;
+  background: #fcfcfc;
+  // .product-card__img
+  span {
+    display: block;
+  }
+  &__img {
+    margin: 0 auto 15px;
+    width: 173px;
+    height: 173px;
+    position: relative;
+    // top: 80px;
+    background-size: cover;
+  }
+
+  &__box {
+  }
+  // .product-card__name
+
+  &__name {
+    color: #0e3e4e;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  // .product-card__brand
+
+  &__brand {
+  }
+
+  // .product-card__kcal
+
+  &__kcal {
+  }
+}

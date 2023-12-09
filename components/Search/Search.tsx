@@ -1,8 +1,17 @@
-import React, {FC, useState} from 'react';
+'use client';
+import React, {FC, useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import './Search.scss';
 
+import {useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
+import {getProducts} from '@/store/searchProducts/actions';
+
 const Search: FC = () => {
+  // let dispatch: any = useDispatch();
+  // let state = useSelector((state: any) => state.products);
+
+  // dispatch(getProducts('tomato', 1));
   const [query, setQuery] = useState('');
   const router = useRouter();
 
@@ -18,7 +27,7 @@ const Search: FC = () => {
         />
         <button
           className='search__button'
-          onClick={() => router.push(`/search?query=${query}`)}
+          onClick={() => router.push(`/search?query=${query}&page=1`)}
         ></button>
       </div>
     </form>

@@ -1,0 +1,13 @@
+.page {
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -12px;
+  }
+  &__item {
+    margin: 0 12px;
+    max-width: 20%;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
