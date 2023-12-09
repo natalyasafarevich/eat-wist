@@ -1,26 +1,30 @@
 .product-card {
-  display: block;
-  // margin: 0 12px 0px;
-  border-radius: 8px;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
   border-radius: 30px;
   border: 2px solid #bfbaba;
   padding: 16px 16px 16px;
   background: #fcfcfc;
-  // .product-card__img
+  overflow: hidden;
+  height: 100%;
   span {
     display: block;
   }
   &__img {
     margin: 0 auto 15px;
-    width: 173px;
-    height: 173px;
+    width: 150px;
+    height: 150px;
     position: relative;
     // top: 80px;
     background-size: cover;
   }
 
-  &__box {
+  span.product-card__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    flex-grow: 1;
   }
   // .product-card__name
 
@@ -34,10 +38,17 @@
   // .product-card__brand
 
   &__brand {
+    text-align: center;
+    color: #949292;
+    font-size: 14px;
+    font-weight: 400;
   }
 
   // .product-card__kcal
 
   &__kcal {
+    color: #0e3e4e;
+    font-size: 24px;
+    font-weight: 700;
   }
 }

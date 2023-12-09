@@ -14,7 +14,8 @@ export type CutDataProductsT = {
   code: string;
   image_url: string;
   product_name: string;
-  nutrition_grades:string,
+  nutrition_grades: string;
+  // ecoscore_grades: string;
   nutriments: {
     ['energy-kcal']: string;
   };

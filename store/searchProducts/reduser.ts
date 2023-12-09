@@ -15,6 +15,7 @@ const initialState: DataProduct = {
         image_url: '',
         product_name: '',
         nutrition_grades: '',
+        // ecoscore_score: '',
         nutriments: {
           ['energy-kcal']: '0',
         },
