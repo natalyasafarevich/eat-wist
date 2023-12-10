@@ -1,6 +1,7 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import './Criteria.scss';
 const itemsEx = [
+  {title: 'Choose a criterion'},
   {title: 'allergens'},
   {title: 'brands'},
   {title: 'categories'},
@@ -16,23 +17,39 @@ const itemsEx = [
   {title: 'additives'},
   {title: 'traces'},
   {title: 'Nutrition grades'},
-
   {title: 'NOVA groups'},
   {title: 'languages'},
   {title: 'contributors'},
   {title: 'editors'},
   {title: 'states'},
 ];
-const Criteria: FC = () => {
+type CriteriaT = {
+  currentCriteria: string;
+  setCurrentCriteria: (value: string) => void;
+};
+const Criteria: FC<CriteriaT> = ({currentCriteria, setCurrentCriteria}) => {
+  // const [, setCurrentCriteria] = useState('');
+
+  // useEffect(()=>{
+  //   currentCriteria ?
+  // },[])
+  const handelClick = (e: React.MouseEvent<HTMLLIElement>) => {
+    let value = e.currentTarget.textContent as string;
+    setCurrentCriteria(value);
+  };
   return (
     <div className='criteria'>
       <div className='criteria__row'>
         <ul className='criteria__dropdown'>
           <li className='criteria__title'>
-            <span>Choose a criterion</span>
+            <span>{currentCriteria}</span>
             <ul className='drop'>
               {itemsEx.map((item) => {
-                return <li className='drop__item'>{item.title}</li>;
+                return (
+                  <li onClick={handelClick} className='drop__item'>
+                    {item.title}
+                  </li>
+                );
               })}
             </ul>
           </li>

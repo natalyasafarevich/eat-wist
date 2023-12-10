@@ -1,16 +1,50 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import './SideBar.scss';
 import {useSearchParams} from 'next/navigation';
 import Criteria from '../Criteria/Criteria';
+import {saveSearchFilter} from '@/localStorageUtils';
 
 type SideBarT = {
   params: {
     value: string;
   };
 };
+type paramsValuesT = {
+  id: number;
+  criteria: string;
+  isValue: boolean;
+};
+let paramsValues: Array<paramsValuesT> = [
+  {
+    id: 0,
+    criteria: '',
+    isValue: true,
+  },
+];
 
 const SideBar: FC<SideBarT> = ({params}) => {
+  let [currentCriteria, setCurrentCriteria] = useState('');
+  useEffect(() => {
+    currentCriteria.length === 0 && setCurrentCriteria('Choose a criterion');
+  }, []);
+
+  useEffect(() => {
+    let currentObj: paramsValuesT = {
+      id: 1,
+      criteria: currentCriteria,
+      isValue: true,
+    };
+    paramsValues.map((item) => {
+      if (currentObj.id === item.id) {
+        paramsValues = [];
+        paramsValues.push(currentObj);
+      }
+    });
+    saveSearchFilter(paramsValues);
+  }, [currentCriteria]);
+
   const searchParams = useSearchParams().get('query') as string;
+
   return (
     <div className='side-bar'>
       <div className='side-bar__wrap'>
@@ -35,7 +69,10 @@ const SideBar: FC<SideBarT> = ({params}) => {
               Select products with specific brands, categories, labels, origins
               of ingredients, manufacturing places etc.
             </label>
-            <Criteria />
+            <Criteria
+              currentCriteria={currentCriteria}
+              setCurrentCriteria={setCurrentCriteria}
+            />
           </div>
         </form>
       </div>
