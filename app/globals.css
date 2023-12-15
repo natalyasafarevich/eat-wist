@@ -1,7 +1,7 @@
 :root {
   --light-font-dark: #06161c;
   --light-font-white: #fff;
-
+  --light-colors-grey: #f5f5f5;
   --light-colors-primary: #79cabe;
 }
 * {
@@ -9,6 +9,9 @@
   padding: 0;
   margin: 0;
   transition: all 0.3s ease;
+}
+html {
+  overflow-x: hidden;
 }
 .button-green {
   text-align: center;

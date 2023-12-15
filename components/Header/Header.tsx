@@ -4,6 +4,7 @@ import './Header.scss';
 import Link from 'next/link';
 import {HEADER_LINKS} from '@/constants/constants';
 import Dropdown from '../Dropdown/Dropdown';
+import Search from '../Search/Search';
 
 const Header: FC = () => {
   // let [arr, setArr] = useState([]);
@@ -44,6 +45,7 @@ const Header: FC = () => {
                 </div>
               </nav>
             </div>
+            <Search />
             <div className='header__auth'>
               <Link
                 href={'/login'}
