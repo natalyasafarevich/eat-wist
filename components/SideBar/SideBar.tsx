@@ -9,23 +9,56 @@ import {
   SORT_BY,
 } from '@/constants/constants';
 import RadioButton from '../RadioButton/RadioButton';
-import {AppDispatch} from '@/store/store';
+import {AppDispatch, RootState} from '@/store/store';
 import {useDispatch} from 'react-redux';
 import {getParams} from '@/store/searchParams/actions';
-
-const SideBar: FC<SideBarT> = ({params}) => {
-  const [formData, setFormData] = useState({
-    title: '',
+import Dropdown from '../Dropdown/Dropdown';
+import {useSelector} from 'react-redux';
+import {getProducts} from '@/store/searchProducts/actions';
+interface FormData {
+  [key: string]: string;
+  title: string;
+  country: string;
+  sortBy: string;
+}
+const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
+  const [isChange, setIsChange] = useState(false);
+  const [formData, setFormData] = useState<FormData>({
+    title: params.value,
+    country: '',
     sortBy: '',
-    criteria: '',
-    additives: '',
-    palmOil: '',
   });
-  const dispatch: AppDispatch = useDispatch();
+  const state = useSelector((state: RootState) => state.country.label);
+  const stdsate = useSelector((state: RootState) => state.products.data);
 
-  useEffect(() => {}, []);
+  const dispatch: AppDispatch = useDispatch();
+  useEffect(() => {
+    isSubmit(false);
+  }, [stdsate]);
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      title: params.value,
+    }));
+  }, [params.value]);
+
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      country: state.toLocaleLowerCase(),
+    }));
+  }, [state]);
+  useEffect(() => {
+    for (let key in formData) {
+      if (formData[key].length > 0) {
+        setIsChange(true);
+        break;
+      }
+    }
+  }, [formData]);
 
   const submitForm = (e: FormEvent<HTMLFormElement>) => {
+    isSubmit(true);
     dispatch(getParams(formData));
     e.preventDefault();
   };
@@ -44,8 +77,21 @@ const SideBar: FC<SideBarT> = ({params}) => {
               className='side-bar__input'
               type='text'
               id='title'
-              value={params.value}
+              value={formData.title}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  title: e.target.value || '',
+                })
+              }
             />
+          </div>
+          <div className='side-bar__box'>
+            <p className='side-bar__desc'>Country</p>
+            <label className='side-bar__label'>
+              Please, select a country of search
+            </label>
+            <Dropdown />
           </div>
           <div className='side-bar__box'>
             <p className='side-bar__desc'>Sort by</p>
@@ -54,40 +100,13 @@ const SideBar: FC<SideBarT> = ({params}) => {
               onChangeTitle={(e: string) =>
                 setFormData({
                   ...formData,
-                  sortBy: e,
+                  sortBy: e || '',
                 })
               }
             />
           </div>
-          <div className='side-bar__box'>
-            <p className='side-bar__desc'>Criteria</p>
-            <label className='side-bar__label' htmlFor='Criteria'>
-              Select products with specific brands, categories, labels, origins
-              of ingredients, manufacturing places etc.
-            </label>
-            <Criteria
-              items={CRITERIA_ITEMS}
-              onChangeTitle={(e: string) =>
-                setFormData({
-                  ...formData,
-                  criteria: e,
-                })
-              }
-            />
-            <input
-              className='side-bar__input side-bar__input_criteria'
-              type='text'
-              id='criteria'
-              placeholder='Enter a criteria'
-              onChange={(e) => {
-                setFormData({
-                  ...formData,
-                  title: e.target.value || '',
-                });
-              }}
-            />
-          </div>
-          <div className='side-bar__box'>
+
+          {/* <div className='side-bar__box'>
             <p className='side-bar__desc'>Ingredients</p>
             <p className='side-bar__subtitle'>Additives</p>
             <div className='side-bar__row'>
@@ -122,9 +141,12 @@ const SideBar: FC<SideBarT> = ({params}) => {
                 />
               ))}
             </div>
-          </div>
+          </div> */}
 
-          <button type='submit' className='button-green'>
+          <button
+            className='button-green side-bar__button'
+            disabled={!isChange}
+          >
             Save & Submit
           </button>
         </form>

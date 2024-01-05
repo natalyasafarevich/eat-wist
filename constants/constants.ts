@@ -17,13 +17,28 @@ export const COUNTRIES = [
     name: 'World',
   },
   {
-    name: 'USA',
+    name: 'Belarus',
+  },
+  {
+    name: 'Belgium',
+  },
+  {
+    name: 'Denmark',
+  },
+  {
+    name: 'Estonia',
   },
   {
     name: 'Poland',
   },
   {
-    name: 'Belarus',
+    name: 'France',
+  },
+  {
+    name: 'Georgia',
+  },
+  {
+    name: 'Germany',
   },
 ];
 

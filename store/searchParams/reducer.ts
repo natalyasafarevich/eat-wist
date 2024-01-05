@@ -3,13 +3,11 @@ export type DataParams = {
   data: {
     title: string;
     sortBy: string;
-    criteria: string;
-    additives: string;
-    palmOil: string;
+    country: string;
   };
 };
 let defaultState: DataParams = {
-  data: {title: '', sortBy: '', criteria: '', additives: '', palmOil: ''},
+  data: {title: '', sortBy: '', country: ''},
 };
 export const searchParamsReducer = (
   state = defaultState,

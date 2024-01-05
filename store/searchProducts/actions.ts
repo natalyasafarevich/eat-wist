@@ -11,10 +11,15 @@ export type getProductsT = {
 
 export type ActionsType = getProductsT;
 
-export const getProducts = (value: string, page: number) => {
+export const getProducts = (
+  value: string,
+  page: number,
+  sort?: string,
+  country?: string,
+) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await searchProducts(value, page);
+      const response = await searchProducts(value, page, sort, country);
       const data = await response.data;
       dispatch({type: SEARCH_PRODUCTS, data: data});
     } catch (e: any) {

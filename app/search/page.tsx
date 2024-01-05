@@ -1,5 +1,5 @@
 'use client';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {getProducts} from '@/store/searchProducts/actions';
 import {RootState} from '@/store/store';
 import Link from 'next/link';
@@ -10,17 +10,29 @@ import ProductCard from '@/components/ProductCard/ProductCard';
 import SideBar from '@/components/SideBar/SideBar';
 let params: {value: string} = {value: ''};
 export default function SearchPage() {
+  const [isSubmit, setIsSubmit] = useState(false);
   const searchParams = useSearchParams().get('query') as string;
   let dispatch: any = useDispatch();
+  let country = useSelector((state: RootState) => state.country);
   let data = useSelector((state: RootState) => state.products.data);
-
+  let dataParams = useSelector((state: RootState) => state.paramsSearch.data);
+  params = {
+    value: searchParams,
+  };
   useEffect(() => {
-    console.log('gfds');
     dispatch(getProducts(searchParams, 1));
-    params = {
-      value: searchParams,
-    };
   }, []);
+  useEffect(() => {
+    isSubmit &&
+      dispatch(
+        getProducts(dataParams.title, 1, dataParams.sortBy, dataParams.country),
+      );
+    console.log(isSubmit);
+  }, [isSubmit]);
+  useEffect(() => {
+    console.log(country.label);
+    // dispatch(getProducts(searchParams, 1));
+  }, [dataParams]);
 
   // let dispatch: any = useDispatch();
   // let state = useSelector((state: any) => state.products);
@@ -29,7 +41,7 @@ export default function SearchPage() {
     <div className={`${style.page} wrap`}>
       <div className={style.page__flex}>
         <div className={style.page__side_bar}>
-          <SideBar params={params} />
+          <SideBar isSubmit={(e) => setIsSubmit(e)} params={params} />
         </div>
         <div className={style.page__row}>
           {data?.products?.map((item, i) => {

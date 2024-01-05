@@ -31,13 +31,14 @@ const Criteria: FC<CriteriaT> = ({items, onChangeTitle}) => {
         paramsValues.push(currentObj);
       }
     });
+    onChangeTitle(currentCriteria);
   }, [currentCriteria]);
 
   const handelClick = (e: React.MouseEvent<HTMLLIElement>) => {
     let value = e.currentTarget.textContent as string;
+
     setCurrentCriteria(value);
     setIsOpen(!isOpen);
-    onChangeTitle(currentCriteria);
   };
 
   return (

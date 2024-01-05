@@ -78,4 +78,12 @@
     flex-wrap: wrap;
     margin: 0 -10px;
   }
+  &__button {
+    cursor: pointer;
+    &:disabled {
+      background-color: var(--light-colors-grey);
+      cursor: default;
+      color: black;
+    }
+  }
 }

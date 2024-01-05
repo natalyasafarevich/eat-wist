@@ -9,6 +9,7 @@ export type CriteriaT = {
   onChangeTitle: (e: string) => void;
 };
 export type SideBarT = {
+  isSubmit: (e: boolean) => void;
   params: {
     value: string;
   };
