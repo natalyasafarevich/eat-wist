@@ -41,7 +41,8 @@
   }
 }
 .drop {
-  height: 300px;
+  max-height: 300px;
+  height: max-content;
   overflow-y: scroll;
   z-index: 1;
   padding: 8px 0;

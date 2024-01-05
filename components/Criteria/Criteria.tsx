@@ -1,57 +1,68 @@
 import React, {FC, useEffect, useState} from 'react';
 import './Criteria.scss';
-const itemsEx = [
-  {title: 'Choose a criterion'},
-  {title: 'allergens'},
-  {title: 'brands'},
-  {title: 'categories'},
-  {title: 'packaging'},
-  {title: 'labels'},
-  {title: 'origins of ingredients'},
-  {title: 'manufacturing or processing places'},
-  {title: 'traceability codes'},
-  {title: 'purchase places'},
-  {title: 'stores'},
-  {title: 'countries'},
-  {title: 'ingredients'},
-  {title: 'additives'},
-  {title: 'traces'},
-  {title: 'Nutrition grades'},
-  {title: 'NOVA groups'},
-  {title: 'languages'},
-  {title: 'contributors'},
-  {title: 'editors'},
-  {title: 'states'},
-];
-type CriteriaT = {
-  currentCriteria: string;
-  setCurrentCriteria: (value: string) => void;
-};
-const Criteria: FC<CriteriaT> = ({currentCriteria, setCurrentCriteria}) => {
-  // const [, setCurrentCriteria] = useState('');
+import {saveSearchFilter} from '@/localStorageUtils';
+import {CriteriaT, paramsValuesT} from '@/app/type/type';
 
-  // useEffect(()=>{
-  //   currentCriteria ?
-  // },[])
+let paramsValues: Array<paramsValuesT> = [
+  {
+    id: 0,
+    criteria: '',
+    isValue: true,
+  },
+];
+
+const Criteria: FC<CriteriaT> = ({items, onChangeTitle}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  let [currentCriteria, setCurrentCriteria] = useState('');
+  useEffect(() => {
+    currentCriteria.length === 0 && setCurrentCriteria('Choose a criterion');
+  }, []);
+
+  useEffect(() => {
+    let currentObj: paramsValuesT = {
+      id: 1,
+      criteria: currentCriteria,
+      isValue: true,
+    };
+    paramsValues.map((item) => {
+      if (currentObj.id === item.id) {
+        paramsValues = [];
+        paramsValues.push(currentObj);
+      }
+    });
+  }, [currentCriteria]);
+
   const handelClick = (e: React.MouseEvent<HTMLLIElement>) => {
     let value = e.currentTarget.textContent as string;
     setCurrentCriteria(value);
+    setIsOpen(!isOpen);
+    onChangeTitle(currentCriteria);
   };
+
   return (
     <div className='criteria'>
       <div className='criteria__row'>
         <ul className='criteria__dropdown'>
           <li className='criteria__title'>
-            <span>{currentCriteria}</span>
-            <ul className='drop'>
-              {itemsEx.map((item) => {
-                return (
-                  <li onClick={handelClick} className='drop__item'>
-                    {item.title}
-                  </li>
-                );
-              })}
-            </ul>
+            <span
+              onClick={() => {
+                setIsOpen(!isOpen);
+              }}
+            >
+              {currentCriteria}
+            </span>
+            {isOpen && (
+              <ul className='drop'>
+                {items.map((item, i) => {
+                  return (
+                    <li key={i} onClick={handelClick} className='drop__item'>
+                      {item.title}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </li>
         </ul>
       </div>

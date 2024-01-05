@@ -39,6 +39,9 @@
   // .side-bar__input
 
   &__input {
+    &_criteria {
+      margin-top: 10px;
+    }
     width: 100%;
     padding: 8px 12px;
     align-items: center;
@@ -53,5 +56,26 @@
   &__desc {
     font-size: 20px;
     margin-bottom: 15px;
+  }
+}
+.side-bar {
+  // .side-bar__box
+
+  // .side-bar__desc
+
+  // .side-bar__subtitle
+
+  &__subtitle {
+    font-style: italic;
+    margin-bottom: 15px;
+    font-size: 15px;
+  }
+
+  // .side-bar__row
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
   }
 }

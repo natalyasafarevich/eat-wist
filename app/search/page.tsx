@@ -8,22 +8,20 @@ import {useSelector, useDispatch} from 'react-redux';
 import style from './page.module.scss';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import SideBar from '@/components/SideBar/SideBar';
-
+let params: {value: string} = {value: ''};
 export default function SearchPage() {
   const searchParams = useSearchParams().get('query') as string;
   let dispatch: any = useDispatch();
   let data = useSelector((state: RootState) => state.products.data);
-  const params = {
-    value: searchParams,
-  };
-  // dispatch(getProducts('tomato', 1));
-  useEffect(() => {
-    dispatch(getProducts(searchParams, 1));
-  }, []);
 
   useEffect(() => {
-    console.log(searchParams);
-  }, [data]);
+    console.log('gfds');
+    dispatch(getProducts(searchParams, 1));
+    params = {
+      value: searchParams,
+    };
+  }, []);
+
   // let dispatch: any = useDispatch();
   // let state = useSelector((state: any) => state.products);
   // Здесь можно использовать значение query для получения необходимой информации
@@ -34,7 +32,7 @@ export default function SearchPage() {
           <SideBar params={params} />
         </div>
         <div className={style.page__row}>
-          {data.products.map((item, i) => {
+          {data?.products?.map((item, i) => {
             return (
               <div key={i} className={style.page__item}>
                 <ProductCard card={item} />

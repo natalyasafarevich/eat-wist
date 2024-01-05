@@ -4,7 +4,7 @@ import {ActionsType, COUNTRY, CountryType} from './actions';
 let selectedCountry = localStorage.getItem('selectedCountry');
 
 const defaultState: CountryType = {
-  label: JSON.parse(selectedCountry as string).country,
+  label: JSON.parse(selectedCountry as string)?.country || 'World',
   isOpen: false,
 };
 
