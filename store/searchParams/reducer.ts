@@ -4,10 +4,11 @@ export type DataParams = {
     title: string;
     sortBy: string;
     country: string;
+    additives: string;
   };
 };
 let defaultState: DataParams = {
-  data: {title: '', sortBy: '', country: ''},
+  data: {title: '', sortBy: '', country: '', additives: ''},
 };
 export const searchParamsReducer = (
   state = defaultState,

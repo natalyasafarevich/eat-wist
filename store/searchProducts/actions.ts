@@ -17,12 +17,19 @@ export const getProducts = (
   page: number,
   sort?: string,
   country?: string,
+  additives?: string,
 ) => {
   return async (dispatch: AppDispatch) => {
     try {
       // start of loading
       dispatch(startOfLoading());
-      const response = await searchProducts(value, page, sort, country);
+      const response = await searchProducts(
+        value,
+        page,
+        sort,
+        country,
+        additives,
+      );
       const data = await response.data;
       dispatch({type: SEARCH_PRODUCTS, data: data});
 

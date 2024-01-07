@@ -18,11 +18,13 @@ import Dropdown from '../Dropdown/Dropdown';
 import {useSelector} from 'react-redux';
 import {getProducts} from '@/store/searchProducts/actions';
 import RedirectComponent from '../RedirectComponent/RedirectComponent';
+import DropdownInput from '../DropdownInput/DropdownInput';
 interface FormData {
   [key: string]: string;
   title: string;
   country: string;
   sortBy: string;
+  additives: string;
 }
 const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
   const [isChange, setIsChange] = useState(false);
@@ -30,6 +32,7 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
     title: params.value,
     country: '',
     sortBy: '',
+    additives: '',
   });
   const state = useSelector((state: RootState) => state.country.label);
   const isDataChange = useSelector((state: RootState) => state.products.data);
@@ -44,6 +47,10 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
       title: params.value,
     }));
   }, [params.value]);
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   useEffect(() => {
     setFormData((prevData) => ({
@@ -109,7 +116,31 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
               }
             />
           </div>
-
+          <div className='side-bar__box'>
+            <p className='side-bar__desc'>Additives</p>
+            <label className='side-bar__label' htmlFor='additives'>
+              the list you can find
+              <a
+                className='side-bar__link'
+                target='_blank'
+                href='https://ec.europa.eu/food/food-feed-portal/screen/food-additives/search'
+              >
+                here
+              </a>
+            </label>
+            <input
+              className='side-bar__input'
+              type='text'
+              id='additives'
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  additives: e.target.value || '',
+                })
+              }
+            />
+          </div>
+          <DropdownInput />
           {/* <div className='side-bar__box'>
             <p className='side-bar__desc'>Ingredients</p>
             <p className='side-bar__subtitle'>Additives</p>

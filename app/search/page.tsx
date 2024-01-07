@@ -33,19 +33,16 @@ export default function SearchPage() {
   }, []);
 
   useEffect(() => {
+    let additives = dataParams.additives.replace(/ /gi, '').toLocaleLowerCase();
+    let title = dataParams.title;
+    let sortBy = strForSearch(dataParams.sortBy);
     let checkCountry =
       dataParams.country.toLocaleLowerCase() === 'world'
         ? ''
         : dataParams.country;
+
     isSubmit &&
-      dispatch(
-        getProducts(
-          dataParams.title,
-          1,
-          strForSearch(dataParams.sortBy),
-          checkCountry,
-        ),
-      );
+      dispatch(getProducts(title, 1, sortBy, checkCountry, additives));
   }, [isSubmit]);
 
   return (
