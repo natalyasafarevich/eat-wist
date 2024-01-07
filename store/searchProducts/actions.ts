@@ -19,6 +19,7 @@ export const getProducts = (
   country?: string,
   additives?: string,
   nutrition_grades?: string,
+  brands?: string,
 ) => {
   return async (dispatch: AppDispatch) => {
     try {
@@ -31,6 +32,7 @@ export const getProducts = (
         country,
         additives,
         nutrition_grades,
+        brands,
       );
       const data = await response.data;
       dispatch({type: SEARCH_PRODUCTS, data: data});

@@ -8,15 +8,19 @@ export default function searchProducts(
   country?: string,
   additives?: string,
   nutrition_grades?: string,
+  brands?: string,
 ) {
   return axios.get(
     `https://world.openfoodfacts.net/api/v2/search?${
       additives ? `additives_tags=${additives}` : ''
-    }&categories_tags=${value}${country ? `&countries_tags=${country}` : ''}${
+    }${brands ? `&brands_tags=${brands}` : ''}
+    &categories_tags=${value}
+    ${country ? `&countries_tags=${country}` : ''}${
       nutrition_grades ? `&nutrition_grades_tags=${nutrition_grades}` : ''
     }
     &fields=code,nutriments,product_name,brands,image_url,nutrition_grades,ecoscore_grades
-    &sort_by=${sort ? sort : 'ecoscore_score'}&page=${page} `,
+    &sort_by=${sort ? sort : 'ecoscore_score'}
+    &page=${page} `,
   );
 
   // curl -X GET "https://world.openfoodfacts.net/api/v2/search?additives_tags=e322&allergens_tags=m&brands_tags=ferrero\

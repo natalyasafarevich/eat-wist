@@ -25,7 +25,8 @@ interface FormData {
   country: string;
   sortBy: string;
   additives: string;
- nutrition_grades:string
+  nutrition_grades: string;
+  brands: string;
 }
 const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
   const [isChange, setIsChange] = useState(false);
@@ -34,7 +35,8 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
     country: '',
     sortBy: '',
     additives: '',
-    nutrition_grades:''
+    nutrition_grades: '',
+    brands: '',
   });
   const state = useSelector((state: RootState) => state.country.label);
   const isDataChange = useSelector((state: RootState) => state.products.data);
@@ -156,6 +158,30 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
                 setFormData({
                   ...formData,
                   nutrition_grades: e.target.value || '',
+                })
+              }
+            />
+          </div>
+          <div className='side-bar__box'>
+            <p className='side-bar__desc'>Brands</p>
+            <label className='side-bar__label' htmlFor='Brands'>
+              The list of full brands you can find
+              <a
+                className='side-bar__link'
+                target='_blank'
+                href='https://world.openfoodfacts.org/brands'
+              >
+                here
+              </a>
+            </label>
+            <input
+              className='side-bar__input'
+              type='text'
+              id='Brands'
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  brands: e.target.value || '',
                 })
               }
             />

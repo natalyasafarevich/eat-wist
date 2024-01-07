@@ -43,6 +43,7 @@ export default function SearchPage() {
     let nutrition_grades = dataParams.nutrition_grades
       .replace(/ /gi, '')
       .toLocaleLowerCase();
+    let brands = dataParams.brands.replace(/ /gi, '').toLocaleLowerCase();
 
     isSubmit &&
       dispatch(
@@ -53,6 +54,7 @@ export default function SearchPage() {
           checkCountry,
           additives,
           nutrition_grades,
+          brands,
         ),
       );
   }, [isSubmit]);
