@@ -40,9 +40,21 @@ export default function SearchPage() {
       dataParams.country.toLocaleLowerCase() === 'world'
         ? ''
         : dataParams.country;
+    let nutrition_grades = dataParams.nutrition_grades
+      .replace(/ /gi, '')
+      .toLocaleLowerCase();
 
     isSubmit &&
-      dispatch(getProducts(title, 1, sortBy, checkCountry, additives));
+      dispatch(
+        getProducts(
+          title,
+          1,
+          sortBy,
+          checkCountry,
+          additives,
+          nutrition_grades,
+        ),
+      );
   }, [isSubmit]);
 
   return (

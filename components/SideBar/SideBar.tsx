@@ -25,6 +25,7 @@ interface FormData {
   country: string;
   sortBy: string;
   additives: string;
+ nutrition_grades:string
 }
 const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
   const [isChange, setIsChange] = useState(false);
@@ -33,6 +34,7 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
     country: '',
     sortBy: '',
     additives: '',
+    nutrition_grades:''
   });
   const state = useSelector((state: RootState) => state.country.label);
   const isDataChange = useSelector((state: RootState) => state.products.data);
@@ -119,7 +121,7 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
           <div className='side-bar__box'>
             <p className='side-bar__desc'>Additives</p>
             <label className='side-bar__label' htmlFor='additives'>
-              the list you can find
+              The list you can find
               <a
                 className='side-bar__link'
                 target='_blank'
@@ -136,6 +138,24 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
                 setFormData({
                   ...formData,
                   additives: e.target.value || '',
+                })
+              }
+            />
+          </div>
+          <div className='side-bar__box'>
+            <p className='side-bar__desc'>Nutrition grades</p>
+            <label className='side-bar__label' htmlFor='nutrition'>
+              Type one of nutrition grades: A, B, C, D, E
+            </label>
+            <input
+              className='side-bar__input'
+              type='text'
+              id='nutrition'
+              maxLength={1}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  nutrition_grades: e.target.value || '',
                 })
               }
             />

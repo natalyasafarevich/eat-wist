@@ -5,10 +5,17 @@ export type DataParams = {
     sortBy: string;
     country: string;
     additives: string;
+    nutrition_grades: string;
   };
 };
 let defaultState: DataParams = {
-  data: {title: '', sortBy: '', country: '', additives: ''},
+  data: {
+    title: '',
+    sortBy: '',
+    country: '',
+    additives: '',
+    nutrition_grades: '',
+  },
 };
 export const searchParamsReducer = (
   state = defaultState,

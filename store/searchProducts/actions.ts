@@ -18,6 +18,7 @@ export const getProducts = (
   sort?: string,
   country?: string,
   additives?: string,
+  nutrition_grades?: string,
 ) => {
   return async (dispatch: AppDispatch) => {
     try {
@@ -29,6 +30,7 @@ export const getProducts = (
         sort,
         country,
         additives,
+        nutrition_grades,
       );
       const data = await response.data;
       dispatch({type: SEARCH_PRODUCTS, data: data});
