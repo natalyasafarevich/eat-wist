@@ -3,6 +3,7 @@ export const SEARCH_PRODUCTS = 'searchProducts/SEARCH_PRODUCTS';
 import {Dispatch} from 'redux';
 import {DataType} from './type';
 import {AppDispatch} from '../store';
+import {endOfLoading, getIsError, startOfLoading} from '../loading/actions';
 
 export type getProductsT = {
   type: typeof SEARCH_PRODUCTS;
@@ -19,15 +20,20 @@ export const getProducts = (
 ) => {
   return async (dispatch: AppDispatch) => {
     try {
+      // start of loading
+      dispatch(startOfLoading());
       const response = await searchProducts(value, page, sort, country);
       const data = await response.data;
       dispatch({type: SEARCH_PRODUCTS, data: data});
-      console.log(data.products.length === 0);
+
+      // end of loading
+      dispatch(endOfLoading());
+
       if (data.products.length === 0) {
-        throw new Error('No products found');
+        dispatch(getIsError('No found'));
       }
     } catch (e: any) {
-      // console.log(e.message);
+      dispatch(getIsError(e.message));
     }
   };
 };
