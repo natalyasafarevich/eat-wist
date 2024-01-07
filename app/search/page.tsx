@@ -8,6 +8,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import style from './page.module.scss';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import SideBar from '@/components/SideBar/SideBar';
+import {strForSearch} from '@/helper/fnc';
 let params: {value: string} = {value: ''};
 export default function SearchPage() {
   const [isSubmit, setIsSubmit] = useState(false);
@@ -23,14 +24,23 @@ export default function SearchPage() {
     dispatch(getProducts(searchParams, 1));
   }, []);
   useEffect(() => {
+    let checkCountry =
+      dataParams.country.toLocaleLowerCase() === 'world'
+        ? ''
+        : dataParams.country;
     isSubmit &&
       dispatch(
-        getProducts(dataParams.title, 1, dataParams.sortBy, dataParams.country),
+        getProducts(
+          dataParams.title,
+          1,
+          strForSearch(dataParams.sortBy),
+          checkCountry,
+        ),
       );
-    console.log(isSubmit);
+    console.log(dataParams.country);
   }, [isSubmit]);
   useEffect(() => {
-    console.log(country.label);
+    console.log(country.label === 'World');
     // dispatch(getProducts(searchParams, 1));
   }, [dataParams]);
 

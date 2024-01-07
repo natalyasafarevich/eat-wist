@@ -22,8 +22,12 @@ export const getProducts = (
       const response = await searchProducts(value, page, sort, country);
       const data = await response.data;
       dispatch({type: SEARCH_PRODUCTS, data: data});
+      console.log(data.products.length === 0);
+      if (data.products.length === 0) {
+        throw new Error('No products found');
+      }
     } catch (e: any) {
-      console.log(e.message);
+      // console.log(e.message);
     }
   };
 };

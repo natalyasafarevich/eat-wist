@@ -1,6 +1,8 @@
+'use client';
 import React, {FC, FormEvent, useEffect, useState} from 'react';
 import './SideBar.scss';
 import Criteria from '../Criteria/Criteria';
+// import {useRouter} from 'next/router';
 import {SideBarT} from '@/app/type/type';
 import {
   ADDITIVE,
@@ -15,6 +17,7 @@ import {getParams} from '@/store/searchParams/actions';
 import Dropdown from '../Dropdown/Dropdown';
 import {useSelector} from 'react-redux';
 import {getProducts} from '@/store/searchProducts/actions';
+import RedirectComponent from '../RedirectComponent/RedirectComponent';
 interface FormData {
   [key: string]: string;
   title: string;
@@ -29,12 +32,12 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
     sortBy: '',
   });
   const state = useSelector((state: RootState) => state.country.label);
-  const stdsate = useSelector((state: RootState) => state.products.data);
+  const isDataChange = useSelector((state: RootState) => state.products.data);
 
   const dispatch: AppDispatch = useDispatch();
   useEffect(() => {
     isSubmit(false);
-  }, [stdsate]);
+  }, [isDataChange]);
   useEffect(() => {
     setFormData((prevData) => ({
       ...prevData,
@@ -48,26 +51,27 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
       country: state.toLocaleLowerCase(),
     }));
   }, [state]);
+
   useEffect(() => {
     for (let key in formData) {
-      if (formData[key].length > 0) {
+      if (formData[key]?.length > 0) {
         setIsChange(true);
         break;
       }
     }
   }, [formData]);
 
-  const submitForm = (e: FormEvent<HTMLFormElement>) => {
-    isSubmit(true);
-    dispatch(getParams(formData));
-    e.preventDefault();
-  };
-
   return (
     <div className='side-bar'>
       <div className='side-bar__wrap'>
         <p className='side-bar__title'>Search for products </p>
-        <form className='side-bar__form' name='' onSubmit={submitForm}>
+        <RedirectComponent
+          pageValue={1}
+          isSubmit={isSubmit}
+          dispatch={dispatch}
+          formData={formData}
+          queryValue={formData.title}
+        >
           <div className='side-bar__box'>
             <label className='side-bar__label' htmlFor='title'>
               Search for words present in the product name, generic name,
@@ -149,7 +153,7 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
           >
             Save & Submit
           </button>
-        </form>
+        </RedirectComponent>
       </div>
     </div>
   );

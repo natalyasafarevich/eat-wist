@@ -71,6 +71,8 @@ export const SORT_BY = [
   {title: 'Product name'},
   {title: 'Add date'},
   {title: 'Edit date'},
+  {title: 'Nutriscore Score'},
+
   {title: 'Completeness'},
 ];
 export type additiveT = {
