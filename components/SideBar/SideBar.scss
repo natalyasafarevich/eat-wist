@@ -30,15 +30,24 @@
   // .side-bar__label
 
   &__label {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 12px;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
     display: block;
   }
-
+  &__link {
+    display: inline-block;
+    padding-left: 5px;
+    text-transform: uppercase;
+    color: var(--light-colors-primary);
+    font-weight: 600;
+  }
   // .side-bar__input
 
   &__input {
+    &_criteria {
+      margin-top: 10px;
+    }
     width: 100%;
     padding: 8px 12px;
     align-items: center;
@@ -53,5 +62,34 @@
   &__desc {
     font-size: 20px;
     margin-bottom: 15px;
+  }
+}
+.side-bar {
+  // .side-bar__box
+
+  // .side-bar__desc
+
+  // .side-bar__subtitle
+
+  &__subtitle {
+    font-style: italic;
+    margin-bottom: 15px;
+    font-size: 15px;
+  }
+
+  // .side-bar__row
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+  }
+  &__button {
+    cursor: pointer;
+    &:disabled {
+      background-color: var(--light-colors-grey);
+      cursor: default;
+      color: black;
+    }
   }
 }

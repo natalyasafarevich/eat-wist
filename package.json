@@ -11,15 +11,18 @@
   "dependencies": {
     "@types/lodash": "^4.14.202",
     "@types/react-redux": "^7.1.31",
+    "@types/uuid": "^9.0.7",
     "axios": "^1.6.2",
     "firebase": "^10.7.0",
+    "ldrs": "^1.0.1",
     "lodash": "^4.17.21",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
     "react-redux": "^8.1.3",
     "redux-thunk": "^2.4.2",
-    "sass": "^1.69.5"
+    "sass": "^1.69.5",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",

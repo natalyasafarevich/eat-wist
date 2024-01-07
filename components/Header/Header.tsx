@@ -40,9 +40,9 @@ const Header: FC = () => {
                     );
                   })}
                 </ul>
-                <div className='header__dropdown'>
+                {/* <div className='header__dropdown'>
                   <Dropdown />
-                </div>
+                </div> */}
               </nav>
             </div>
             <Search />

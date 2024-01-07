@@ -15,9 +15,9 @@ const Dropdown: FC = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    saveSelectedCountry(store);
-  }, [store]);
+  // useEffect(() => {
+  //   saveSelectedCountry(store);
+  // }, [store]);
 
   const handelClick = (e: React.MouseEvent<HTMLLIElement>) => {
     let selectedCountry = e.currentTarget.textContent as string;
