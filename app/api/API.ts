@@ -19,7 +19,7 @@ export default function searchProducts(
       nutrition_grades ? `&nutrition_grades_tags=${nutrition_grades}` : ''
     }
     &fields=code,nutriments,product_name,brands,image_url,nutrition_grades,ecoscore_grades
-    &sort_by=${sort ? sort : 'ecoscore_score'}
+    &sort_by=${sort ? sort : 'product_name'}
     &page=${page} `,
   );
 

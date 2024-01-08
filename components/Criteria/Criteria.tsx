@@ -16,7 +16,7 @@ const Criteria: FC<CriteriaT> = ({items, onChangeTitle}) => {
 
   let [currentCriteria, setCurrentCriteria] = useState('');
   useEffect(() => {
-    currentCriteria.length === 0 && setCurrentCriteria('Choose a criterion');
+    currentCriteria.length === 0 && setCurrentCriteria('Product name');
   }, []);
 
   useEffect(() => {

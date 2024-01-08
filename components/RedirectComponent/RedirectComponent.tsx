@@ -1,6 +1,8 @@
 import {FC, ReactNode, useEffect} from 'react';
 import {useRouter} from 'next/navigation';
 import {getParams} from '@/store/searchParams/actions';
+import {useSelector} from 'react-redux';
+import {RootState} from '@/store/store';
 
 type RedirectComponentProps = {
   isSubmit: (e: boolean) => void;
@@ -24,7 +26,6 @@ const RedirectComponent: FC<RedirectComponentProps> = ({
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     isSubmit(true);
     dispatch(getParams(formData));
-
     router.push(
       `/search?query=${queryValue.toLocaleLowerCase()}&page=${pageValue}`,
     );

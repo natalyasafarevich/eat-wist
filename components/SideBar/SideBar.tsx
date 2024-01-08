@@ -10,7 +10,7 @@ import {
   PALM_OIL,
   SORT_BY,
 } from '@/constants/constants';
-import RadioButton from '../RadioButton/RadioButton';
+
 import {AppDispatch, RootState} from '@/store/store';
 import {useDispatch} from 'react-redux';
 import {getParams} from '@/store/searchParams/actions';
@@ -18,7 +18,6 @@ import Dropdown from '../Dropdown/Dropdown';
 import {useSelector} from 'react-redux';
 import {getProducts} from '@/store/searchProducts/actions';
 import RedirectComponent from '../RedirectComponent/RedirectComponent';
-import DropdownInput from '../DropdownInput/DropdownInput';
 interface FormData {
   [key: string]: string;
   title: string;
@@ -186,7 +185,6 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
               }
             />
           </div>
-          <DropdownInput />
           {/* <div className='side-bar__box'>
             <p className='side-bar__desc'>Ingredients</p>
             <p className='side-bar__subtitle'>Additives</p>
