@@ -1,6 +1,7 @@
 export const SEARCH_PARAMS = 'searchParams/SEARCH_PARAMS';
 export type DataParams = {
   title: string;
+  page_number: number;
   sortBy: string;
   country: string;
   additives: string;
@@ -14,7 +15,15 @@ export type getParamsT = {
 
 export type ActionsType = getParamsT;
 export const getParams = (card: DataParams): getParamsT => {
-  const {title, sortBy, country, additives, nutrition_grades, brands} = card;
+  const {
+    title,
+    sortBy,
+    country,
+    additives,
+    nutrition_grades,
+    brands,
+    page_number,
+  } = card;
 
   const data = {
     title,
@@ -23,6 +32,7 @@ export const getParams = (card: DataParams): getParamsT => {
     additives,
     nutrition_grades,
     brands,
+    page_number,
   };
 
   return {type: SEARCH_PARAMS, data};

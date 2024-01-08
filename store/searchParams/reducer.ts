@@ -7,6 +7,7 @@ export type DataParams = {
     additives: string;
     nutrition_grades: string;
     brands: string;
+    page_number: number;
   };
 };
 let defaultState: DataParams = {
@@ -17,6 +18,7 @@ let defaultState: DataParams = {
     additives: '',
     nutrition_grades: '',
     brands: '',
+    page_number: 1,
   },
 };
 export const searchParamsReducer = (

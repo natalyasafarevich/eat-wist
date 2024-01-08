@@ -9,10 +9,12 @@ import ProductCard from '@/components/ProductCard/ProductCard';
 import SideBar from '@/components/SideBar/SideBar';
 import {strForSearch} from '@/helper/fnc';
 import Loading from '@/components/Loading/Loading';
+import PaginationOutlined from '@/components/PaginationOutlined/PaginationOutlined';
 
 let params: {value: string} = {value: ''};
 
 export default function SearchPage() {
+  const [currenPage, setCurrentPage] = useState<number>(1);
   const [isSubmit, setIsSubmit] = useState(false);
   const searchParams = useSearchParams().get('query') as string;
 
@@ -29,7 +31,7 @@ export default function SearchPage() {
   };
 
   useEffect(() => {
-    dispatch(getProducts(searchParams, 1));
+    dispatch(getProducts(searchParams, currenPage));
   }, []);
 
   useEffect(() => {
@@ -44,12 +46,12 @@ export default function SearchPage() {
       .replace(/ /gi, '')
       .toLocaleLowerCase();
     let brands = dataParams.brands.replace(/ /gi, '').toLocaleLowerCase();
-
-    isSubmit &&
+    if (isSubmit) {
+      setCurrentPage(1);
       dispatch(
         getProducts(
           title,
-          1,
+          currenPage,
           sortBy,
           checkCountry,
           additives,
@@ -57,10 +59,17 @@ export default function SearchPage() {
           brands,
         ),
       );
+    }
   }, [isSubmit]);
-
+  useEffect(() => {
+    dispatch(getProducts(searchParams, currenPage));
+  }, [currenPage]);
   return (
     <div className={`${style.page} wrap`}>
+      <PaginationOutlined
+        isUpdate={isSubmit}
+        getPage={(number) => setCurrentPage(number)}
+      />
       <div className={style.page__flex}>
         <div className={style.page__side_bar}>
           <SideBar isSubmit={(e) => setIsSubmit(e)} params={params} />

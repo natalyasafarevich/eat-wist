@@ -4,19 +4,12 @@ import './SideBar.scss';
 import Criteria from '../Criteria/Criteria';
 // import {useRouter} from 'next/router';
 import {SideBarT} from '@/app/type/type';
-import {
-  ADDITIVE,
-  CRITERIA_ITEMS,
-  PALM_OIL,
-  SORT_BY,
-} from '@/constants/constants';
+import {SORT_BY} from '@/constants/constants';
 
 import {AppDispatch, RootState} from '@/store/store';
 import {useDispatch} from 'react-redux';
-import {getParams} from '@/store/searchParams/actions';
 import Dropdown from '../Dropdown/Dropdown';
 import {useSelector} from 'react-redux';
-import {getProducts} from '@/store/searchProducts/actions';
 import RedirectComponent from '../RedirectComponent/RedirectComponent';
 interface FormData {
   [key: string]: string;
@@ -185,43 +178,6 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
               }
             />
           </div>
-          {/* <div className='side-bar__box'>
-            <p className='side-bar__desc'>Ingredients</p>
-            <p className='side-bar__subtitle'>Additives</p>
-            <div className='side-bar__row'>
-              {ADDITIVE.map((info) => (
-                // e.target.nextSibling?.textContent
-                <RadioButton
-                  onChange={(e) => {
-                    setFormData({
-                      ...formData,
-                      additives: e.target.nextSibling?.textContent || '',
-                    });
-                  }}
-                  key={info.id}
-                  info={info}
-                />
-              ))}
-            </div>
-          </div>
-          <div className='side-bar__box'>
-            <p className='side-bar__subtitle'>Ingredients from palm oil</p>
-            <div className='side-bar__row'>
-              {PALM_OIL.map((info) => (
-                <RadioButton
-                  key={info.id}
-                  info={info}
-                  onChange={(e) => {
-                    setFormData({
-                      ...formData,
-                      palmOil: e.target.nextSibling?.textContent || '',
-                    });
-                  }}
-                />
-              ))}
-            </div>
-          </div> */}
-
           <button
             className='button-green side-bar__button'
             disabled={!isChange}
