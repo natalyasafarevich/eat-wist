@@ -4,23 +4,39 @@ import {ProductProps} from './type';
 
 const initialState: ProductProps = {
   data: {
-    count: 0,
-    page: 0,
-    page_count: 0,
-    page_size: 0,
-    products: [
-      {
-        brands: '',
-        code: '',
-        image_url: '',
-        product_name: '',
-        nutrition_grades: '',
-        // ecoscore_score: '',
-        nutriments: {
-          ['energy-kcal']: '0',
-        },
+    product: {
+      product_name: '',
+      stores: '',
+      additives_old_tags: [],
+      categories: ' ',
+      countries: '',
+      image_url: '',
+      ingredients_analysis_tags: [],
+      manufacturing_places: '',
+      nutriments: {
+        carbohydrates: 0,
+        carbohydrates_unit: '',
+        'energy-kj': 0,
+        'energy-kj_unit': '',
+        'energy-kcal': 0,
+        'energy-kcal_unit': '',
+        fat: 0,
+        fat_unit: '',
+        'fruits-vegetables-legumes-estimate-from-ingredients_100g': 0,
+        'nova-group': 0,
+        salt: 0,
+        salt_unit: '',
+        sugars: 0,
+        sugars_unit: '',
       },
-    ],
+      nutrition_grades: '',
+      packagings: [
+        {
+          material: '',
+          quantity_per_unit: '',
+        },
+      ],
+    },
   },
 };
 

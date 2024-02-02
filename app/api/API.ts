@@ -26,7 +26,7 @@ export function searchProducts(
 
 export function searchAProduct(value: string) {
   return axios.get(
-    `https://world.openfoodfacts.net/api/v2/product/${value}?fields=product_name,nutriscore_data,nutrition_grades`,
+    `https://world.openfoodfacts.net/api/v2/product/${value}?fields=product_name,image_url,nutrition_grades,nutriments,categories,countries,manufacturing_places,packagings,stores,ingredients_analysis_tags,additives_old_tags`,
   );
 
   // curl -X GET "https://world.openfoodfacts.net/api/v2/search?additives_tags=e322&allergens_tags=m&brands_tags=ferrero\
