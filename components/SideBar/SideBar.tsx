@@ -2,7 +2,7 @@
 import React, {FC, FormEvent, useEffect, useState} from 'react';
 import './SideBar.scss';
 import Criteria from '../Criteria/Criteria';
-// import {useRouter} from 'next/router';
+import {usePathname, useRouter, useSearchParams} from 'next/navigation';
 import {SideBarT} from '@/app/type/type';
 import {SORT_BY} from '@/constants/constants';
 
@@ -22,31 +22,27 @@ interface FormData {
 }
 const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
   const [isChange, setIsChange] = useState(false);
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState<FormData>({
     title: params.value,
     country: '',
     sortBy: '',
     additives: '',
     nutrition_grades: '',
+    page_number: '1',
     brands: '',
   });
   const state = useSelector((state: RootState) => state.country.label);
   const isDataChange = useSelector((state: RootState) => state.products.data);
 
   const dispatch: AppDispatch = useDispatch();
-  useEffect(() => {
-    isSubmit(false);
-  }, [isDataChange]);
+  useEffect(() => {}, []);
   useEffect(() => {
     setFormData((prevData) => ({
       ...prevData,
       title: params.value,
     }));
   }, [params.value]);
-
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
 
   useEffect(() => {
     setFormData((prevData) => ({
@@ -69,8 +65,7 @@ const SideBar: FC<SideBarT> = ({params, isSubmit}) => {
       <div className='side-bar__wrap'>
         <p className='side-bar__title'>Search for products </p>
         <RedirectComponent
-          pageValue={1}
-          isSubmit={isSubmit}
+          pageValue={'1'}
           dispatch={dispatch}
           formData={formData}
           queryValue={formData.title}
