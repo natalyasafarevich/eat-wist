@@ -1,4 +1,4 @@
-import {Header} from '@/types';
+import {Header} from '@/types/types';
 import {v4 as uuidv4} from 'uuid';
 
 export const HEADER_LINKS: Array<Header> = [

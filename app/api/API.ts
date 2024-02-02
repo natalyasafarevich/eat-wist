@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {some} from 'lodash';
 
-export default function searchProducts(
+export function searchProducts(
   value: string,
   page: number,
   sort?: string,
@@ -21,6 +21,12 @@ export default function searchProducts(
     &fields=code,nutriments,product_name,brands,image_url,nutrition_grades,ecoscore_grades
     &sort_by=${sort ? sort : 'product_name'}
     &page=${page} `,
+  );
+}
+
+export function searchAProduct(value: string) {
+  return axios.get(
+    `https://world.openfoodfacts.net/api/v2/product/${value}?fields=product_name,nutriscore_data,nutrition_grades`,
   );
 
   // curl -X GET "https://world.openfoodfacts.net/api/v2/search?additives_tags=e322&allergens_tags=m&brands_tags=ferrero\

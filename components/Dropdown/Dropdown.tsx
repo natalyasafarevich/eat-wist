@@ -6,11 +6,12 @@ import './Dropdown.scss';
 import {currentCountry} from '@/store/coutrues/actions';
 import {saveSelectedCountry} from '@/localStorageUtils';
 import {COUNTRIES} from '@/constants/constants';
+import {RootState} from '@/store/store';
 
 const Dropdown: FC = () => {
   let [isOpen, setIsOpen] = useState(false);
-  let store = useSelector((state: any) => state.country);
-  let initialCountry = store ? store.label : 'World';
+  let store = useSelector((state: RootState) => state.country);
+  let initialCountry = store.label.length !== 0 ? store.label : 'World';
   let [country, setCountry] = useState(initialCountry);
 
   const dispatch = useDispatch();

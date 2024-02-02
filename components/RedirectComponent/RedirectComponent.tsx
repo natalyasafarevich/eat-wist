@@ -1,10 +1,6 @@
 import {FC, ReactNode, useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {getParams} from '@/store/searchParams/actions';
-import {useSelector} from 'react-redux';
-import {RootState} from '@/store/store';
-import useProductsEffect from '@/hooks/useProductsEffect';
-import {getProducts} from '@/store/searchProducts/actions';
 
 type RedirectComponentProps = {
   dispatch: (action: any) => void;
@@ -21,13 +17,8 @@ const RedirectComponent: FC<RedirectComponentProps> = ({
   queryValue,
   pageValue,
 }) => {
-  const updatedValues = useSelector(
-    (state: RootState) => state.paramsSearch.data,
-  );
-
   const router = useRouter();
 
-  useEffect(() => {}, []);
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     dispatch(getParams(formData));
     router.push(

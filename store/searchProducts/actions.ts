@@ -1,9 +1,9 @@
-import searchProducts from '@/app/api/API';
-export const SEARCH_PRODUCTS = 'searchProducts/SEARCH_PRODUCTS';
-import {Dispatch} from 'redux';
+import {searchProducts} from '@/app/api/API';
 import {DataType} from './type';
 import {AppDispatch} from '../store';
 import {endOfLoading, getIsError, startOfLoading} from '../loading/actions';
+
+export const SEARCH_PRODUCTS = 'searchProducts/SEARCH_PRODUCTS';
 
 export type getProductsT = {
   type: typeof SEARCH_PRODUCTS;

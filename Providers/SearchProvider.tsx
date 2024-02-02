@@ -1,4 +1,4 @@
-import useProductsEffect from '@/hooks/useProductsEffect';
+import useProductsEffect from '@/CustomHooks/useProductsEffect';
 import {getProducts} from '@/store/searchProducts/actions';
 import {RootState} from '@/store/store';
 import {useSearchParams} from 'next/navigation';
